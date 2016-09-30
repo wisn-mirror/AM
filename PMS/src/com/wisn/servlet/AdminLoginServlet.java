@@ -17,6 +17,7 @@ import com.wisn.core.IDS;
 import com.wisn.service.AuthService;
 import com.wisn.serviceimpl.AuthServiceImpl;
 import com.wisn.serviceimpl.DeviceInfoServiceImpl;
+import com.wisn.utils.LogUtils;
 /**
  * 
  * @author Wisn
@@ -64,6 +65,7 @@ public class AdminLoginServlet extends HttpServlet {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				LogUtils.e("AdminLoginServlet:"+e.toString());
 				response.getWriter().print(JsonPars.toJson("",new Result("  Server  Error ",""), 500));
 			}
 	}

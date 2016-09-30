@@ -68,7 +68,7 @@ public class SessionFactory {
 		
 	}
 	public static void main(String[] args) {
-		LogUtils.e("时间："+System.currentTimeMillis());
+		LogUtils.d("时间："+System.currentTimeMillis());
 		SessionFactory init = SessionFactory.getInstance().init();
 		long  currentID=0;
 		for(int i=0;i<100000000;i++){
@@ -78,9 +78,9 @@ public class SessionFactory {
 				currentID=id;
 			}
 		}
-		LogUtils.e("时间："+System.currentTimeMillis());
+		LogUtils.d("时间："+System.currentTimeMillis());
 		Session dichotomySearch = init.getSession(currentID);
-		LogUtils.e("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);
+		LogUtils.d("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);
 	}
 
 }

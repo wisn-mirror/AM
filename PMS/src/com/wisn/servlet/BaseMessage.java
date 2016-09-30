@@ -29,7 +29,7 @@ public class BaseMessage {
 	private    long  identify=-1;
 	@OnError
 	public  void onError(Session session, java.lang.Throwable throwable){
-		LogUtils.e("OnError" );
+		LogUtils.d("OnError" );
 		
 	}
 	@OnClose
@@ -37,20 +37,20 @@ public class BaseMessage {
 		if(closeReason.getCloseCode()!=CloseCodes.CANNOT_ACCEPT){
 			SessionFactory.getInstance().init().removeSession(identify);			
 		}
-		LogUtils.e("OnClose"+identify);
+		LogUtils.d("OnClose"+identify);
 	}
 	@OnMessage
 	public  void onMessage(String message){
-		LogUtils.e("onMessage："+identify+message);
+		LogUtils.d("onMessage："+identify+message);
 		if(message!=null&&!"".equals(message)){
-			OperationMessage operationMessage = JsonPars.FromJson(message, OperationMessage.class);
+			OperationMessage operationMessage = JsonPars.fromJson(message, OperationMessage.class);
 			operationMessage.setMessageContext(message);
 			MessageQueue.getInstance().init().MessageQueue(operationMessage);
 		}
 	}
 	@OnOpen
 	public  void OnOpen(Session session, @PathParam(value = "identify") long identify){
-		LogUtils.e("OnOpen"+identify);
+		LogUtils.d("OnOpen"+identify);
 		if(IDS.getId(identify)){
 			SessionFactory.getInstance().init().addSession(identify, session);			
 		}else{
@@ -58,6 +58,7 @@ public class BaseMessage {
 				session.close(new  CloseReason(CloseCodes.CANNOT_ACCEPT, "CANNOT_ACCEPT"));
 			} catch (IOException e) {
 				e.printStackTrace();
+				LogUtils.e("close session  error:"+e.toString());
 			}
 		}
 	}

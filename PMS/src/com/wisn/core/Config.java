@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 
 import javax.servlet.ServletContext;
 
+import com.wisn.utils.LogUtils;
+
 /**
  * 
  * @author Wisn 2016年9月30日 上午9:23:21
@@ -31,8 +33,10 @@ public class Config {
 				pro.load(new FileInputStream(context.getRealPath("/WEB-INF/config/system.properties")));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
+				LogUtils.e("FileNotFoundException:"+e.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
+				LogUtils.e("IOException:"+e.toString());
 			}
 			initMaxHandleThread = Integer.parseInt(pro
 					.getProperty("initMaxHandleThread"));
@@ -45,6 +49,7 @@ public class Config {
 			initHalfHandleThread = 3;
 			initEveryThreadMessage = 20;
 			e.printStackTrace();
+			LogUtils.e("intConfig:"+e.toString());
 		}
 	}
 	public static void main(String[] args) {

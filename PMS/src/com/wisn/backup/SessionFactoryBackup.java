@@ -67,7 +67,7 @@ public class SessionFactoryBackup {
 	}
 	public  static  int count =0;
 	public static void main(String[] args) {
-		LogUtils.e("时间："+System.currentTimeMillis());
+		LogUtils.d("时间："+System.currentTimeMillis());
 		SessionFactoryBackup init = SessionFactoryBackup.getInstance().init();
 		long  currentID=0;
 		for(int i=0;i<10000000;i++){
@@ -77,9 +77,9 @@ public class SessionFactoryBackup {
 				currentID=id;
 			}
 		}
-		LogUtils.e("时间："+System.currentTimeMillis());
+		LogUtils.d("时间："+System.currentTimeMillis());
 		Session dichotomySearch = init.dichotomySearch(currentID);
-		LogUtils.e("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);
+		LogUtils.d("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);
 	}
 	
 	public   Session dichotomySearch(long  id){
@@ -87,7 +87,7 @@ public class SessionFactoryBackup {
 		int  last=sessionQueue.size();
 		int  middle=(head+last)/2;
 		if(sessionQueue.get(last-1).getSessionId()<id|sessionQueue.get(head).getSessionId()>id){
-			LogUtils.e("查找的数超出范围");
+			LogUtils.d("查找的数超出范围");
 			return  null;
 		}
 		while(last>head){

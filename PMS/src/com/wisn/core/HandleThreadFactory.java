@@ -1,6 +1,8 @@
 package com.wisn.core;
 
 import java.util.Vector;
+
+import com.wisn.utils.LogUtils;
 /**
  * 
  * @author Wisn
@@ -64,6 +66,7 @@ public class HandleThreadFactory {
 			}
 		}catch(Exception  e){
 			e.printStackTrace();
+			LogUtils.e("removeThread:"+e.toString());
 		}
 		
 	}

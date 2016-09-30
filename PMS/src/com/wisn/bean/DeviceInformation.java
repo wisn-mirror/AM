@@ -1,7 +1,8 @@
 package com.wisn.bean;
 /**
  * 
- * @author 00301945
+ * @author Wisn
+ * 2016年9月30日   下午4:25:12
  *
  */
 public class DeviceInformation {

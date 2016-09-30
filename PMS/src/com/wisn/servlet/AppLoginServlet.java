@@ -17,6 +17,7 @@ import com.wisn.core.IDS;
 import com.wisn.service.AuthService;
 import com.wisn.serviceimpl.AuthServiceImpl;
 import com.wisn.serviceimpl.DeviceInfoServiceImpl;
+import com.wisn.utils.LogUtils;
 /***
  * 
  * @author Wisn
@@ -46,7 +47,7 @@ public class AppLoginServlet extends HttpServlet {
 				if(requestContent==null||"".equals(requestContent)){
 					response.getWriter().print(JsonPars.toJson("",new Result(" Lack of necessary parameters ",""), 500));
 				}else{
-					DeviceInformation loginParamter = JsonPars.FromJson(requestContent, DeviceInformation.class);
+					DeviceInformation loginParamter = JsonPars.fromJson(requestContent, DeviceInformation.class);
 					//验证身份
 					AuthServiceImpl   auth=new  AuthServiceImpl();
 					//loginParamter 
@@ -66,6 +67,7 @@ public class AppLoginServlet extends HttpServlet {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
+				LogUtils.e("AppLoginServlet:"+e.toString());
 				response.getWriter().print(JsonPars.toJson("",new Result("  Server  Error ",""), 500));
 			}
 	}
