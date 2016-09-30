@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import javax.servlet.ServletContext;
+
 /**
  * 
  * @author Wisn 2016年9月30日 上午9:23:21
@@ -16,7 +18,7 @@ public class Config {
 	public static int initHalfHandleThread = 3;
 	public static int initEveryThreadMessage = 20;
 	
-	public void intConfig() {
+	public void intConfig(ServletContext   context) {
 		/*
 		 * ResourceBundle rb=ResourceBundle.getBundle("com.wisn.jdbc.jdbc");
 		 * initMaxHandleThread=(Integer) rb.getObject("initMaxHandleThread");
@@ -24,7 +26,9 @@ public class Config {
 		try {
 			Properties pro = new Properties();
 			try {
-				pro.load(new FileInputStream("config/system.properties"));
+				//context.getRealPath("/META-INF/upload/temp");
+			//	pro.load(new FileInputStream("config/system.properties"));
+				pro.load(new FileInputStream(context.getRealPath("/WEB-INF/config/system.properties")));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -44,6 +48,6 @@ public class Config {
 		}
 	}
 	public static void main(String[] args) {
-	   new  Config().intConfig();
+	   //new  Config().intConfig();
 	}
 }

@@ -3,7 +3,12 @@ package com.wisn.service;
 import java.util.Vector;
 
 import com.wisn.core.OperationMessage;
-
+/**
+ * 
+ * @author Wisn
+ * 2016年9月30日   上午11:11:46
+ *
+ */
 public interface  OperationMessageService {
 	/**
 	 * 保存单个消息

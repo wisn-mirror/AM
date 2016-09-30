@@ -23,7 +23,7 @@ import com.wisn.serviceimpl.DeviceInfoServiceImpl;
  * 2016年9月30日   上午9:24:16
  *
  */
-@WebServlet("/appLogin")
+@WebServlet("/adminLogin")
 public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 5507001835503546202L;
 	public AdminLoginServlet() {

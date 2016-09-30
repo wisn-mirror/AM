@@ -83,5 +83,4 @@ public class SessionFactory {
 		LogUtils.e("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);
 	}
 
-	
 }

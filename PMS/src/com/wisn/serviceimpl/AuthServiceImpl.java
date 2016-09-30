@@ -9,7 +9,7 @@ public class AuthServiceImpl implements  AuthService{
 	@Override
 	public Admin DeviceLogin(String username, String password) {
 		// TODO Auto-generated method stub
-		return null;
+		return new  Admin();
 	}
 
 }
