@@ -23,7 +23,14 @@ public class OperationMessage {
 	private   int  operationType;
 	
 	/**
-	 * send  appInstall lock  reboot ring  
+	 * 	 send message
+	 *   appInstall 
+	 *   lock  
+	 *   reboot 
+	 *   ring  
+	 *   wipe data
+	 *   change lockpassword
+	 *   
 	 */
 	private  int messageType;
 	

@@ -1,17 +1,49 @@
 package com.wisn.core;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.ResourceBundle;
+
 /**
  * 
- * @author Wisn
- * 2016年9月30日   上午9:23:21
+ * @author Wisn 2016年9月30日 上午9:23:21
  *
  */
 public class Config {
-	public  static int  initMaxHandleThread=6;
-	public  static int  initHalfHandleThread=3;
-	public  static int  initEveryThreadMessage=20;
-
+	public static int initMaxHandleThread = 6;
+	public static int initHalfHandleThread = 3;
+	public static int initEveryThreadMessage = 20;
 	
-	public  void  intConfig(){
-	
+	public void intConfig() {
+		/*
+		 * ResourceBundle rb=ResourceBundle.getBundle("com.wisn.jdbc.jdbc");
+		 * initMaxHandleThread=(Integer) rb.getObject("initMaxHandleThread");
+		 */
+		try {
+			Properties pro = new Properties();
+			try {
+				pro.load(new FileInputStream("config/system.properties"));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			initMaxHandleThread = Integer.parseInt(pro
+					.getProperty("initMaxHandleThread"));
+			initHalfHandleThread = Integer.parseInt(pro
+					.getProperty("initHalfHandleThread"));
+			initEveryThreadMessage = Integer.parseInt(pro
+					.getProperty("initEveryThreadMessage"));
+		} catch (NumberFormatException e) {
+			initMaxHandleThread = 6;
+			initHalfHandleThread = 3;
+			initEveryThreadMessage = 20;
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+	   new  Config().intConfig();
 	}
 }

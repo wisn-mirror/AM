@@ -20,10 +20,9 @@ public class ContextListener implements   ServletContextListener{
 	@Override
 	public void contextInitialized(final ServletContextEvent sc) {
 		LogUtils.d("Start  Message  Server!");
+		new  Config().intConfig();
 		HandleThreadFactory.getInstance().init().startService();
 		//初始化数据，加载所有的id到IDS中
-		
-		
 		//sc.getServletContext().setAttribute("online", 0);
 	/*	Timer  timer=new Timer();
 		timer.schedule(new TimerTask(){
