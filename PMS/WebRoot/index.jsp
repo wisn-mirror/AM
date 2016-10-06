@@ -20,7 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
   </head>
   
-  <body>
+  <body  align='center'>
   AM 管理系统 <br>
+  <a  href="./AdminLogin.jsp">登录</a>
   </body>
 </html>

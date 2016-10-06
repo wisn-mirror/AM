@@ -50,14 +50,16 @@ public class AdminLoginServlet extends HttpServlet {
 				}*/
 				//添加验证码验证
 				if(username==null||"".equals(username)||password==null||"".equals(password)){
-					response.getWriter().print(JsonPars.toJson("",new Result(" Lack of necessary parameters ",""), 500));
+//					response.getWriter().print(JsonPars.toJson("",new Result(" Lack of necessary parameters ",""), 500));
+					request.getRequestDispatcher("/AdminLogin.jsp").forward(request, response);
 				}else{
 					//验证身份
 					AuthServiceImpl   auth=new  AuthServiceImpl();
 					//loginParamter 
 					Admin appLogin = auth.DeviceLogin(username,password);
 					if(appLogin==null){
-						response.getWriter().print(JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500));
+//						response.getWriter().print(JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500));
+						request.getRequestDispatcher("/AdminLogin.jsp").forward(request, response);
 					}else{
 						request.getSession().setAttribute("admin", appLogin);
 						request.getRequestDispatcher("/Manager.jsp").forward(request, response);
@@ -66,7 +68,8 @@ public class AdminLoginServlet extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				LogUtils.e("AdminLoginServlet:"+e.toString());
-				response.getWriter().print(JsonPars.toJson("",new Result("  Server  Error ",""), 500));
+				//response.getWriter().print(JsonPars.toJson("",new Result("  Server  Error ",""), 500));
+				request.getRequestDispatcher("/AdminLogin.jsp").forward(request, response);
 			}
 	}
 	public void init() throws ServletException {

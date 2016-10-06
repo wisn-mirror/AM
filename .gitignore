@@ -1,1 +1,4 @@
 *.class
+PMS/.classpath
+PMS/.settings/com.genuitec.eclipse.migration.prefs
+PMS/.settings/org.eclipse.wst.common.project.facet.core.xml
