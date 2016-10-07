@@ -19,6 +19,11 @@ public class Config {
 	public static int initMaxHandleThread = 6;
 	public static int initHalfHandleThread = 3;
 	public static int initEveryThreadMessage = 20;
+    public  static String DBClassName = null;  
+    public  static String DBName = null;  
+    public  static String DBUrl = null;  
+    public  static String DBUser = null;  
+    public  static String DBPassword = null;  
 	
 	public void intConfig(ServletContext   context) {
 		/*
@@ -44,6 +49,11 @@ public class Config {
 					.getProperty("initHalfHandleThread"));
 			initEveryThreadMessage = Integer.parseInt(pro
 					.getProperty("initEveryThreadMessage"));
+			DBClassName=pro.getProperty("DBClassName");
+			DBName=pro.getProperty("DBName");
+			DBUrl=pro.getProperty("DBUrl");
+			DBUser=pro.getProperty("DBUser");
+			DBPassword=pro.getProperty("DBPassword");
 		} catch (NumberFormatException e) {
 			initMaxHandleThread = 6;
 			initHalfHandleThread = 3;
