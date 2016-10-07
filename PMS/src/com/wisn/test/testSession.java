@@ -16,7 +16,11 @@ import javax.websocket.RemoteEndpoint.Async;
 import javax.websocket.RemoteEndpoint.Basic;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
-
+/**
+ * 测试Session
+ * @author Wisn_
+ *
+ */
 public class testSession implements Session {
 
 	@Override

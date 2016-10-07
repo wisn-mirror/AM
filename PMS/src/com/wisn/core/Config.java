@@ -19,11 +19,13 @@ public class Config {
 	public static int initMaxHandleThread = 6;
 	public static int initHalfHandleThread = 3;
 	public static int initEveryThreadMessage = 20;
-    public  static String DBClassName = null;  
-    public  static String DBName = null;  
-    public  static String DBUrl = null;  
-    public  static String DBUser = null;  
-    public  static String DBPassword = null;  
+    public  static String DBClassName = "com.mysql.jdbc.Driver";  
+    public  static String DBName = "am_sys";  
+//    public  static String DBUrl = "jdbc:mysql:///"; 
+    public  static String DBUrl = "jdbc:mysql://localhost:3307/"; 
+   // jdbc:mysql://localhost:3306/
+    public  static String DBUser = "root";  
+    public  static String DBPassword = "123456";      
 	
 	public void intConfig(ServletContext   context) {
 		/*

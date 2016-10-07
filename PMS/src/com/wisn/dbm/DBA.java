@@ -8,10 +8,5 @@ import java.sql.Statement;
 public interface DBA {
 	Connection getConnection() throws SQLException,
 	ClassNotFoundException, InterruptedException ;
-
-	void close(Connection conn);
-
-	void close(Statement stat);
-
-	void close(ResultSet rest);
+	void close(ResultSet rest,Statement stat,Connection conn);
 }
