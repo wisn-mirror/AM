@@ -39,7 +39,8 @@ public class Config {
 			try {
 				//context.getRealPath("/META-INF/upload/temp");
 			//	pro.load(new FileInputStream("config/system.properties"));
-				pro.load(new FileInputStream(context.getRealPath("/WEB-INF/config/system.properties")));
+				pro.load(new FileInputStream(context.getRealPath("/WEB-INF/config_user/system.properties")));
+			
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 				LogUtils.e("FileNotFoundException:"+e.toString());
@@ -58,6 +59,7 @@ public class Config {
 			DBUrl=pro.getProperty("DBUrl");
 			DBUser=pro.getProperty("DBUser");
 			DBPassword=pro.getProperty("DBPassword");
+			LogUtils.d("初始化配置成功");
 		} catch (NumberFormatException e) {
 			initMaxHandleThread = 6;
 			initHalfHandleThread = 3;
