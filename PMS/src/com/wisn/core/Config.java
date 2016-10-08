@@ -16,6 +16,8 @@ import com.wisn.utils.LogUtils;
  *
  */
 public class Config {
+
+	
 	public static int initMaxHandleThread = 6;
 	public static int initHalfHandleThread = 3;
 	public static int initEveryThreadMessage = 20;
