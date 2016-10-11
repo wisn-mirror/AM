@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 
 import javax.servlet.ServletContext;
 
+import org.apache.log4j.PropertyConfigurator;
+
 import com.wisn.utils.LogUtils;
 
 /**
@@ -66,10 +68,7 @@ public class Config {
 			LogUtils.e("intConfig:"+e.toString());
 		}
 		
-		String file =this.getInitParameter("log4j");//从web.xml配置读取，名字一定要和web.xml配置一致
-		  if(file != null){
-		     PropertyConfigurator.configure(file);
-		  }
+		
 	}
 	public static void main(String[] args) {
 	   //new  Config().intConfig();

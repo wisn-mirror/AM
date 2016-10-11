@@ -7,6 +7,8 @@ import java.util.TimerTask;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.apache.log4j.PropertyConfigurator;
+
 import com.wisn.utils.LogUtils;
 
 /**
@@ -19,12 +21,17 @@ public class ContextListener implements   ServletContextListener{
 	 
 	@Override
 	public void contextInitialized(final ServletContextEvent sc) {
+		String file =sc.getServletContext().getRealPath("/WEB-INF/config_user/log4j.properties");
+		  if(file != null){
+		     PropertyConfigurator.configure(file);
+		  }
+		  LogUtils.initConfig();
 		LogUtils.d("Start  Message  Server!");
 		new  Config().intConfig(sc.getServletContext());
 		HandleThreadFactory.getInstance().init().startService();
 		//初始化数据，加载所有的id到IDS中
 		//sc.getServletContext().setAttribute("online", 0);
-	/*	Timer  timer=new Timer();
+		Timer  timer=new Timer();
 		timer.schedule(new TimerTask(){
 			@Override
 			public void run() {
@@ -38,13 +45,12 @@ public class ContextListener implements   ServletContextListener{
 				LogUtils.d("Thread check ");
 			}
 			
-		}, new Date(),2000);*/
+		}, new Date(),20);
 	}
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		LogUtils.d("Stop  Message  Server!");
 		//TODO  存储所有消息列队中的消息
-		
 		HandleThreadFactory.getInstance().init().removeAllThread();
 	}
 }
