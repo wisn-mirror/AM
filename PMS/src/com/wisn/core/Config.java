@@ -16,8 +16,6 @@ import com.wisn.utils.LogUtils;
  *
  */
 public class Config {
-
-	
 	public static int initMaxHandleThread = 6;
 	public static int initHalfHandleThread = 3;
 	public static int initEveryThreadMessage = 20;
@@ -67,6 +65,11 @@ public class Config {
 			e.printStackTrace();
 			LogUtils.e("intConfig:"+e.toString());
 		}
+		
+		String file =this.getInitParameter("log4j");//从web.xml配置读取，名字一定要和web.xml配置一致
+		  if(file != null){
+		     PropertyConfigurator.configure(file);
+		  }
 	}
 	public static void main(String[] args) {
 	   //new  Config().intConfig();
