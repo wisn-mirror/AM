@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 
 
 public class LogUtils {
-	public  static  boolean isDebug=true;
+	public  static  boolean isDebug=false;
 	private static Logger logger;
 	public  static void  initConfig(){
 		logger = Logger.getLogger("PMS");

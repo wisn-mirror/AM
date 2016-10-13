@@ -24,7 +24,7 @@ public class Config {
     public  static String DBClassName = "com.mysql.jdbc.Driver";  
     public  static String DBName = "am_sys";  
 //    public  static String DBUrl = "jdbc:mysql:///"; 
-    public  static String DBUrl = "jdbc:mysql://localhost:3307/"; 
+    public  static String DBUrl = "jdbc:mysql://localhost:3306/"; 
    // jdbc:mysql://localhost:3306/
     public  static String DBUser = "root";  
     public  static String DBPassword = "123456";      

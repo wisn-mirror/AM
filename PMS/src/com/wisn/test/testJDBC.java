@@ -23,8 +23,38 @@ public class testJDBC {
 			}
 			System.out.println(System.currentTimeMillis());*/
 			DbExecute  db=new  DbExecute();
-			 db.find("select * from test ",new  ResultSetCallBack() {
+			 db.executeQuery("select * from test ",new  ResultSetCallBack() {
+
+				@Override
+				public void executeResult(ResultSet resultSet) {
+					// TODO Auto-generated method stub
+					try {
+						while(resultSet.next()){
+							System.out.println(resultSet.getString("content"));
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+
+				@Override
+				public void executeRowCount(int id) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void executeGeneratedKeys(ResultSet resultSet) {
+					// TODO Auto-generated method stub
+					
+				}
 				
+			});
+			
+			 db.executeInsert("insert into test(content) values('hdhdh') ",new  ResultSetCallBack() {
+
 				@Override
 				public void executeResult(ResultSet resultSet) {
 					// TODO Auto-generated method stub
@@ -37,9 +67,29 @@ public class testJDBC {
 						e.printStackTrace();
 					}
 				}
-			});
-			
-			
+
+				@Override
+				public void executeRowCount(int id) {
+					// TODO Auto-generated method stub
+					System.out.println( id);
+				}
+
+				@Override
+				public void executeGeneratedKeys(ResultSet resultSet) {
+					// TODO Auto-generated method stub
+					try {
+						while(resultSet.next()){
+							System.out.println(resultSet.getString(1));
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+					
+					 
+				});
+				
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
