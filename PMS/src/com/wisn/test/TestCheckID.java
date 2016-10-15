@@ -3,9 +3,15 @@ package com.wisn.test;
 import java.util.HashSet;
 
 public class TestCheckID  extends Base {
-	
-		public static void main(String[] args) {
-			System.out.println(new TestCheckID().tag);
+	  public static void main(String[] args) {
+	      int j = 0;
+	      for(int i = 0; i < 100; i ++) {
+	          j = j ++;
+	          System.out.println(j);
+	      }
+	  }
+//		public static void main(String[] args) {
+//			System.out.println(new TestCheckID().tag);
 		/*	HashSet<Integer>  test=new  HashSet<Integer>();
 			System.out.println(System.nanoTime());
 			for(int i=0;i<1000;i++){
@@ -36,5 +42,5 @@ public class TestCheckID  extends Base {
 	        }else{
 	        	System.out.println(2);
 	        }*/
-		}
+//		}
 }

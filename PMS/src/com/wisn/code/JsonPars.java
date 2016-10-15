@@ -56,10 +56,10 @@ public class JsonPars {
 		String json = toJson(new  OperationMessage(22, 55, System.currentTimeMillis(), System.currentTimeMillis(), "ahhah"),null, 3);
 		System.out.println(json);
 		System.out.println(fromJson(json,OperationMessage.class).toString());
-		String json1 = toJson(new  DeviceInformation("ererwq","ererwq","ererwq","ererwq","ererwq","ererwq"
+	/*	String json1 = toJson(new  DeviceInformation("ererwq","ererwq","ererwq","ererwq","ererwq","ererwq"
 				,"ererwq","ererwq","ererwq","ererwq","ererwq",77
 				,"ererwq","ererwq"),null, 3);
 		System.out.println(json1);
-		System.out.println(fromJson(json1,DeviceInformation.class).toString());
+		System.out.println(fromJson(json1,DeviceInformation.class).toString());*/
 	}
 }

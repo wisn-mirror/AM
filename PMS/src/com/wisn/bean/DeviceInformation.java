@@ -7,52 +7,64 @@ package com.wisn.bean;
  */
 public class DeviceInformation {
 	private 	long  id;
-	private  String  userName;
+	private  String userName;
 	private  String passWord;
-	private  String netWorkName;
-	private  String deviceModel;
-	private  String deviceManufacturer;//设备制造商
-	private  String osVersion;
-	private  String sdkVersion;
-	private  String deviceName;
-	private  String deviceId;
-	private  String imsiNumber;
-	private  String macAddress;
-	private  int  isRooted;
-	private  String SimSerialNumber;
-	private  String AllSensorsName;//分号分隔
+	private String device_imei;
+	private String device_imsi;
+	private String device_networkoperatorname;
+	private String device_name;
+	private String device_model; 
+	private String device_macaddress;
+	private String device_osname;
+	private String device_manufacturer;
+	private String device_osversion;
+	private int device_isrooted;
 	
 	public DeviceInformation() {
 		super();
 	}
-	public DeviceInformation(String userName, String passWord, String netWorkName,
-			String deviceModel, String deviceManufacturer, String osVersion,
-			String sdkVersion, String deviceName, String deviceId,
-			String imsiNumber, String macAddress, int isRooted,
-			String simSerialNumber, String allSensorsName) {
+	
+	public DeviceInformation(long id, String device_imei, String device_imsi,
+			String device_networkoperatorname, String device_name,
+			String device_model, String device_macaddress,
+			String device_osname, String device_manufacturer,
+			String device_osversion, int device_isrooted) {
 		super();
-		this.userName = userName;
-		this.passWord = passWord;
-		this.netWorkName = netWorkName;
-		this.deviceModel = deviceModel;
-		this.deviceManufacturer = deviceManufacturer;
-		this.osVersion = osVersion;
-		this.sdkVersion = sdkVersion;
-		this.deviceName = deviceName;
-		this.deviceId = deviceId;
-		this.imsiNumber = imsiNumber;
-		this.macAddress = macAddress;
-		this.isRooted = isRooted;
-		SimSerialNumber = simSerialNumber;
-		AllSensorsName = allSensorsName;
+		this.id = id;
+		this.device_imei = device_imei;
+		this.device_imsi = device_imsi;
+		this.device_networkoperatorname = device_networkoperatorname;
+		this.device_name = device_name;
+		this.device_model = device_model;
+		this.device_macaddress = device_macaddress;
+		this.device_osname = device_osname;
+		this.device_manufacturer = device_manufacturer;
+		this.device_osversion = device_osversion;
+		this.device_isrooted = device_isrooted;
 	}
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
+	public DeviceInformation(long id, String userName, String passWord,
+			String device_imei, String device_imsi,
+			String device_networkoperatorname, String device_name,
+			String device_model, String device_macaddress,
+			String device_osname, String device_manufacturer,
+			String device_osversion, int device_isrooted) {
+		super();
 		this.id = id;
+		this.userName = userName;
+		this.passWord = passWord;
+		this.device_imei = device_imei;
+		this.device_imsi = device_imsi;
+		this.device_networkoperatorname = device_networkoperatorname;
+		this.device_name = device_name;
+		this.device_model = device_model;
+		this.device_macaddress = device_macaddress;
+		this.device_osname = device_osname;
+		this.device_manufacturer = device_manufacturer;
+		this.device_osversion = device_osversion;
+		this.device_isrooted = device_isrooted;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -65,90 +77,72 @@ public class DeviceInformation {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
-	public String getNetWorkName() {
-		return netWorkName;
+	public long getId() {
+		return id;
 	}
-	public void setNetWorkName(String netWorkName) {
-		this.netWorkName = netWorkName;
+	public void setId(long id) {
+		this.id = id;
 	}
-	public String getDeviceModel() {
-		return deviceModel;
+	public String getDevice_imei() {
+		return device_imei;
 	}
-	public void setDeviceModel(String deviceModel) {
-		this.deviceModel = deviceModel;
+	public void setDevice_imei(String device_imei) {
+		this.device_imei = device_imei;
 	}
-	public String getDeviceManufacturer() {
-		return deviceManufacturer;
+	public String getDevice_imsi() {
+		return device_imsi;
 	}
-	public void setDeviceManufacturer(String deviceManufacturer) {
-		this.deviceManufacturer = deviceManufacturer;
+	public void setDevice_imsi(String device_imsi) {
+		this.device_imsi = device_imsi;
 	}
-	public String getOsVersion() {
-		return osVersion;
+	public String getDevice_networkoperatorname() {
+		return device_networkoperatorname;
 	}
-	public void setOsVersion(String osVersion) {
-		this.osVersion = osVersion;
+	public void setDevice_networkoperatorname(String device_networkoperatorname) {
+		this.device_networkoperatorname = device_networkoperatorname;
 	}
-	public String getSdkVersion() {
-		return sdkVersion;
+	public String getDevice_name() {
+		return device_name;
 	}
-	public void setSdkVersion(String sdkVersion) {
-		this.sdkVersion = sdkVersion;
+	public void setDevice_name(String device_name) {
+		this.device_name = device_name;
 	}
-	public String getDeviceName() {
-		return deviceName;
+	public String getDevice_model() {
+		return device_model;
 	}
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
+	public void setDevice_model(String device_model) {
+		this.device_model = device_model;
 	}
-	public String getDeviceId() {
-		return deviceId;
+	public String getDevice_macaddress() {
+		return device_macaddress;
 	}
-	public void setDeviceId(String deviceId) {
-		this.deviceId = deviceId;
+	public void setDevice_macaddress(String device_macaddress) {
+		this.device_macaddress = device_macaddress;
 	}
-	public String getImsiNumber() {
-		return imsiNumber;
+	public String getDevice_osname() {
+		return device_osname;
 	}
-	public void setImsiNumber(String imsiNumber) {
-		this.imsiNumber = imsiNumber;
+	public void setDevice_osname(String device_osname) {
+		this.device_osname = device_osname;
 	}
-	public String getMacAddress() {
-		return macAddress;
+	public String getDevice_manufacturer() {
+		return device_manufacturer;
 	}
-	public void setMacAddress(String macAddress) {
-		this.macAddress = macAddress;
+	public void setDevice_manufacturer(String device_manufacturer) {
+		this.device_manufacturer = device_manufacturer;
 	}
-	public int getIsRooted() {
-		return isRooted;
+	public String getDevice_osversion() {
+		return device_osversion;
 	}
-	public void setIsRooted(int isRooted) {
-		this.isRooted = isRooted;
+	public void setDevice_osversion(String device_osversion) {
+		this.device_osversion = device_osversion;
 	}
-	public String getSimSerialNumber() {
-		return SimSerialNumber;
+	public int getDevice_isrooted() {
+		return device_isrooted;
 	}
-	public void setSimSerialNumber(String simSerialNumber) {
-		SimSerialNumber = simSerialNumber;
+	public void setDevice_isrooted(int device_isrooted) {
+		this.device_isrooted = device_isrooted;
 	}
-	public String getAllSensorsName() {
-		return AllSensorsName;
-	}
-	public void setAllSensorsName(String allSensorsName) {
-		AllSensorsName = allSensorsName;
-	}
-	@Override
-	public String toString() {
-		return "LoginParameter [userName=" + userName + ", passWord="
-				+ passWord + ", netWorkName=" + netWorkName + ", deviceModel="
-				+ deviceModel + ", deviceManufacturer=" + deviceManufacturer
-				+ ", osVersion=" + osVersion + ", sdkVersion=" + sdkVersion
-				+ ", deviceName=" + deviceName + ", deviceId=" + deviceId
-				+ ", imsiNumber=" + imsiNumber + ", macAddress=" + macAddress
-				+ ", isRooted=" + isRooted + ", SimSerialNumber="
-				+ SimSerialNumber + ", AllSensorsName=" + AllSensorsName + "]";
-	}
-	
 	
 
 }
