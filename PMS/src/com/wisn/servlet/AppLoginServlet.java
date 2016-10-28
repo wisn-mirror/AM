@@ -29,6 +29,7 @@ public class AppLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 5507001835503546202L;
 	public AppLoginServlet() {
 		super();
+		System.out.println("AppLoginServlet");
 	}
 
 	public void destroy() {

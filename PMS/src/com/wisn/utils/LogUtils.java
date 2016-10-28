@@ -1,34 +1,41 @@
 package com.wisn.utils;
 
-import org.apache.log4j.Logger;
+import org.apache.log4j.*; 
 
 
 
 public class LogUtils {
-	public  static  boolean isDebug=false;
+	public  static  boolean isDebug=true;
 	private static Logger logger;
 	public  static void  initConfig(){
-		logger = Logger.getLogger("PMS");
+//		logger = Logger.getLogger();
 		   //如果指定logger名字，则是把日志，输出到pay-log 指定的日志文件中去
-		// Logger logger = Logger.getLogger("aa");
+		 Logger logger = Logger.getLogger("aa");
+	
 	}
 	public static  void d(String  content){
 		if(isDebug){
 			System.out.println(content);
-			logger.error(content);
+			if(logger!=null){				
+				logger.error(content);
+			}
 		}
 	}
 	public static  void w(String  content){
 		if(isDebug){
 			System.out.println(content);
 			//logger.warn(content);
-			logger.error(content);
+			if(logger!=null){				
+				logger.error(content);
+			}
 		}
 	}
 	public static  void e(String  content){
 		if(isDebug){
 			System.err.println(content);
-			logger.error(content);
+			if(logger!=null){				
+				logger.error(content);
+			}
 		}
 	}
 	
