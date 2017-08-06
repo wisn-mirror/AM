@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="BaseJar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/c3p0-0.9.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/commons-collections-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/commons-lang-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/ezmorph-1.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/json-lib-2.4-jdk15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/log4j-1.2-api-2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/log4j-api-2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/log4j-core-2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/log4j-web-2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/mysql-connector-java-5.0.6-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/json-lib-2.4-jdk15-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../PMS/WebRoot/WEB-INF/lib/json-lib-2.4-jdk15-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
