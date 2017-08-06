@@ -1,6 +1,6 @@
 package com.wisn.core;
 
-import javax.websocket.Session;
+import com.wisn.bean.SessionClient;
 /**
  * 
  * @author Wisn
@@ -25,11 +25,11 @@ public class MessageHandingThread extends Thread {
 				pollMessage= MessageQueue.getInstance().init().pollMessage();
 				if(pollMessage==null)
 					break;
-				Session session = SessionFactory.getInstance().init()
+				SessionClient session = SessionFactory.getInstance().init()
 						.getSession(pollMessage.getMessageSendToID());
 				if (session != null) {
 					synchronized (pollMessage) {
-						session.getAsyncRemote().sendText(
+						session.getSession().getAsyncRemote().sendText(
 								pollMessage.getMessageContext());
 						//handle  message  success
 						if(onHandleMessageCallBack!=null){

@@ -1,10 +1,9 @@
 package com.wisn.core;
-import java.util.LinkedHashMap;
 
-import javax.websocket.Session;
-
-import com.wisn.test.testSession;
+import com.wisn.bean.SessionClient;
 import com.wisn.utils.LogUtils;
+
+import java.util.LinkedHashMap;
 
 
 /***
@@ -14,7 +13,7 @@ import com.wisn.utils.LogUtils;
  *
  */
 public class SessionFactory {
-	private LinkedHashMap<Long, Session> sessionQueue = null;
+	private LinkedHashMap<Long, SessionClient> sessionQueue = null;
 	private static SessionFactory sessionFactory = null;
 
 	public static SessionFactory getInstance() {
@@ -33,7 +32,7 @@ public class SessionFactory {
 		if (sessionQueue == null) {
 			synchronized (MessageQueue.class) {
 				if (sessionQueue == null) {
-					sessionQueue = new LinkedHashMap<Long, Session>();
+					sessionQueue = new LinkedHashMap<Long, SessionClient>();
 					return this;
 				}
 			}
@@ -46,7 +45,7 @@ public class SessionFactory {
 	 * @param id
 	 * @return
 	 */
-	public  Session  getSession(long  id){
+	public  SessionClient  getSession(long  id){
 		return sessionQueue.get(id);
 	}
 	/**
@@ -54,7 +53,7 @@ public class SessionFactory {
 	 * @param id
 	 * @return
 	 */
-	public Session  removeSession(long  id){
+	public SessionClient  removeSession(long  id){
 		 return sessionQueue.remove(id) ;
 	}
 	/**
@@ -63,7 +62,7 @@ public class SessionFactory {
 	 * @param session
 	 * @return
 	 */
-	public Session  addSession(long  id,Session session){
+	public SessionClient  addSession(long  id,SessionClient session){
 		return  sessionQueue.put(id, session);
 		
 	}
@@ -73,13 +72,13 @@ public class SessionFactory {
 		long  currentID=0;
 		for(int i=0;i<100000000;i++){
 			long  id=System.currentTimeMillis();
-			init.addSession(id, new  testSession());
+//			init.addSession(id, new  testSession());
 			if(i==9){
 				currentID=id;
 			}
 		}
 		LogUtils.d("时间："+System.currentTimeMillis());
-		Session dichotomySearch = init.getSession(currentID);
+		SessionClient dichotomySearch = init.getSession(currentID);
 		LogUtils.d("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);
 	}
 

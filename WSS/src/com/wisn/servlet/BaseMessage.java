@@ -1,23 +1,18 @@
 package com.wisn.servlet;
 
-import java.io.IOException;
-
-import javax.websocket.CloseReason;
-import javax.websocket.CloseReason.CloseCodes;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.OnClose;
-import javax.websocket.Session;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
-
+import com.wisn.bean.SessionClient;
 import com.wisn.code.JsonPars;
 import com.wisn.core.IDS;
 import com.wisn.core.MessageQueue;
 import com.wisn.core.OperationMessage;
 import com.wisn.core.SessionFactory;
 import com.wisn.utils.LogUtils;
+
+import javax.websocket.*;
+import javax.websocket.CloseReason.CloseCodes;
+import javax.websocket.server.PathParam;
+import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 /**
  * 
  * @author Wisn
@@ -52,7 +47,7 @@ public class BaseMessage {
 	public  void OnOpen(Session session, @PathParam(value = "identify") long identify){
 		LogUtils.d("OnOpen"+identify);
 		if(IDS.getId(identify)){
-			SessionFactory.getInstance().init().addSession(identify, session);			
+			SessionFactory.getInstance().init().addSession(identify,new SessionClient(session));
 		}else{
 			try {
 				session.close(new  CloseReason(CloseCodes.CANNOT_ACCEPT, "CANNOT_ACCEPT"));

@@ -64,7 +64,7 @@ public class ChatServer extends WebSocketServer {
 	@Override
 	public void onMessage( WebSocket conn, String message ) {
 		this.sendToAll( message );
-		System.out.println( conn + ": " + message );
+		System.out.println( conn.hashCode() + ": " + message );
 	}
 
 	@Override
