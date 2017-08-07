@@ -1,4 +1,4 @@
-package com.wisn.servlet;
+package com.wisn.servlet.ws;
 
 import com.wisn.bean.SessionClient;
 import com.wisn.code.JsonPars;

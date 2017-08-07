@@ -1,5 +1,7 @@
 package com.wisn.servlet;
 
+import com.wisn.utils.LogUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class BaseServlet extends HttpServlet {
+    public BaseServlet() {
+        super();
+        LogUtils.d(this.getClass().getName());
+    }
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        LogUtils.d("Init:"+this.getClass().getName());
+    }
+
+    @Override
+    public void destroy() {
+        super.destroy();
+        LogUtils.d("destroy:"+this.getClass().getName());
+
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);

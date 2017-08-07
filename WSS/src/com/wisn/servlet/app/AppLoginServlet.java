@@ -1,4 +1,4 @@
-package com.wisn.servlet;
+package com.wisn.servlet.app;
 
 import com.wisn.bean.Admin;
 import com.wisn.bean.DeviceInformation;
@@ -6,6 +6,7 @@ import com.wisn.bean.Result;
 import com.wisn.code.JsonPars;
 import com.wisn.serviceimpl.AuthServiceImpl;
 import com.wisn.serviceimpl.DeviceInfoServiceImpl;
+import com.wisn.servlet.BaseServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,18 +20,9 @@ import java.io.IOException;
  * 2016年9月30日   上午9:26:14
  *
  */
-@WebServlet("/appLogin")
+@WebServlet("/app/applogin")
 public class AppLoginServlet extends BaseServlet {
 	private static final long serialVersionUID = 5507001835503546202L;
-	public AppLoginServlet() {
-		super();
-		System.out.println("AppLoginServlet");
-	}
-
-	public void destroy() {
-		super.destroy(); 
-	
-	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request,response);
@@ -68,7 +60,4 @@ public class AppLoginServlet extends BaseServlet {
 				responseJson(response,jsonResponse);
 			}
 	}
-	public void init() throws ServletException {
-	}
-
 }

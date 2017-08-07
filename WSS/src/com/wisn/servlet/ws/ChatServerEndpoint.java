@@ -1,4 +1,4 @@
-package com.wisn.servlet;
+package com.wisn.servlet.ws;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
