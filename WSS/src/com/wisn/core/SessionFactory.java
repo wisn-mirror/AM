@@ -32,7 +32,7 @@ public class SessionFactory {
 		if (sessionQueue == null) {
 			synchronized (MessageQueue.class) {
 				if (sessionQueue == null) {
-					sessionQueue = new LinkedHashMap<Long, SessionClient>();
+					sessionQueue = new LinkedHashMap<>();
 					return this;
 				}
 			}
@@ -48,6 +48,7 @@ public class SessionFactory {
 	public  SessionClient  getSession(long  id){
 		return sessionQueue.get(id);
 	}
+
 	/**
 	 * removeSession
 	 * @param id
@@ -56,6 +57,7 @@ public class SessionFactory {
 	public SessionClient  removeSession(long  id){
 		 return sessionQueue.remove(id) ;
 	}
+
 	/**
 	 * addSession
 	 * @param id
@@ -64,7 +66,6 @@ public class SessionFactory {
 	 */
 	public SessionClient  addSession(long  id,SessionClient session){
 		return  sessionQueue.put(id, session);
-		
 	}
 	public static void main(String[] args) {
 		LogUtils.d("时间："+System.currentTimeMillis());

@@ -7,7 +7,10 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
-public class MessageEntrance    extends WebSocketServer {
+/**
+ *
+ */
+public class MessageEntrance  extends WebSocketServer {
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         try{

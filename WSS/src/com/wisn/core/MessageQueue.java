@@ -27,7 +27,7 @@ public class MessageQueue {
 		if (queue == null) {
 			synchronized (MessageQueue.class) {
 				if (queue == null) {
-					queue = new Vector<OperationMessage>();
+					queue = new Vector<>();
 				}
 			}
 		}

@@ -1,8 +1,8 @@
 package com.wisn.core;
 
-import java.util.Vector;
-
 import com.wisn.utils.LogUtils;
+
+import java.util.Vector;
 /**
  * 
  * @author Wisn
@@ -29,7 +29,7 @@ public class HandleThreadFactory {
 		if (threadlist == null) {
 			synchronized (MessageQueue.class) {
 				if (threadlist == null) {
-					threadlist = new Vector<MessageHandingThread>();
+					threadlist = new Vector<>();
 				}
 			}
 		}

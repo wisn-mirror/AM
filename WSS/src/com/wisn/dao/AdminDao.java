@@ -3,11 +3,11 @@
  */
 package com.wisn.dao;
 
-import java.sql.ResultSet;
-
 import com.wisn.bean.Admin;
 import com.wisn.dbm.DbExecute;
 import com.wisn.dbm.ResultSetCallBack;
+
+import java.sql.ResultSet;
 
 /**
  * @author Wisn
@@ -37,7 +37,6 @@ public class  AdminDao {
 					if(exist){
 						String  name=resultSet.getString("name");
 						String  password=resultSet.getString("password");
-						System.out.println();
 						admin.setName(name);
 						admin.setPassword(password);
 					}
