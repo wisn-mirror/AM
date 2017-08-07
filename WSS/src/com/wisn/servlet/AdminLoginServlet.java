@@ -6,7 +6,6 @@ import com.wisn.utils.LogUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,7 +16,7 @@ import java.io.IOException;
  *
  */
 @WebServlet("/adminLogin")
-public class AdminLoginServlet extends HttpServlet {
+public class AdminLoginServlet extends BaseServlet {
 	private static final long serialVersionUID = 5507001835503546202L;
 	public AdminLoginServlet() {
 		super();

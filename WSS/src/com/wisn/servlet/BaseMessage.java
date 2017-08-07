@@ -36,12 +36,17 @@ public class BaseMessage {
 	}
 	@OnMessage
 	public  void onMessage(String message){
-		LogUtils.d("onMessage："+identify+message);
-		if(message!=null&&!"".equals(message)){
-			OperationMessage operationMessage = JsonPars.fromJson(message, OperationMessage.class);
-			operationMessage.setMessageContext(message);
-			MessageQueue.getInstance().init().MessageQueue(operationMessage);
+		try{
+			LogUtils.d("onMessage："+identify+message);
+			if(message!=null&&!"".equals(message)){
+				OperationMessage operationMessage = JsonPars.fromJson(message, OperationMessage.class);
+				operationMessage.setMessageContext(message);
+				MessageQueue.getInstance().init().MessageQueue(operationMessage);
+			}
+		}catch (Exception e){
+			e.printStackTrace();
 		}
+
 	}
 	@OnOpen
 	public  void OnOpen(Session session, @PathParam(value = "identify") long identify){

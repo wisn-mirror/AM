@@ -6,7 +6,6 @@ import com.wisn.utils.LogUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -17,8 +16,8 @@ import java.io.IOException;
  * 2016年9月30日   上午9:24:16
  *
  */
-@WebServlet("/adminLogin")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/register")
+public class RegisterServlet extends BaseServlet {
 	private static final long serialVersionUID = 5507001835503546202L;
 	public RegisterServlet() {
 		super();
@@ -38,20 +37,19 @@ public class RegisterServlet extends HttpServlet {
 				String  username=request.getParameter("username");
 				String  password=request.getParameter("password");
 				String  code=request.getParameter("code");
-				//添加验证码验证
+				//todo 添加验证码验证
 				if(username==null||"".equals(username)||password==null||"".equals(password)){
-//					response.getWriter().print(JsonPars.toJson("",new Result(" Lack of necessary parameters ",""), 500));
 					request.getRequestDispatcher("/register.jsp").forward(request, response);
 				}else{
 					//验证身份
 					AuthServiceImpl   auth=new  AuthServiceImpl();
 					//loginParamter 
-					Admin appLogin = auth.DeviceLogin(username,password);
-					if(appLogin==null){
+					Admin register = auth.UserRegister(username,password);
+					if(register==null){
 //						response.getWriter().print(JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500));
-						request.getRequestDispatcher("/AdminLogin.jsp").forward(request, response);
+						request.getRequestDispatcher("/register.jsp").forward(request, response);
 					}else{
-						request.getSession().setAttribute("admin", appLogin);
+						request.getSession().setAttribute("admin", register);
 						request.getRequestDispatcher("/Manager.jsp").forward(request, response);
 					}
 				}

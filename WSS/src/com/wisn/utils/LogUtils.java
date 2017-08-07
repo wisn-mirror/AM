@@ -10,7 +10,7 @@ public class LogUtils {
 	public  static void  initConfig(){
 //		logger = Logger.getLogger();
 		   //如果指定logger名字，则是把日志，输出到pay-log 指定的日志文件中去
-		logger = Logger.getLogger("aa");
+//		logger = Logger.getLogger("aa");
 	
 	}
 	public static  void d(String  content){

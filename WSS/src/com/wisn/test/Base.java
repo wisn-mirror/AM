@@ -3,6 +3,9 @@
  */
 package com.wisn.test;
 
+import com.wisn.bean.DeviceInformation;
+import com.wisn.code.JsonPars;
+
 import java.util.List;
 
 /**
@@ -49,10 +52,12 @@ public class Base {
 		}*/
 		
 //		String temp="{\"faultCode\":\"\",\"temperature\":["+i+","+i+","+i+","+i+","+i+","+i+"],\"isLeakChange_5jiao\":"+istrue+",\"isSaleStop\":"+istrue+",\"isLeakChange_1yuan\":"+istrue+",\"isDoorOpen\":"+istrue+",\"isVmcDisconnect\":"+istrue+",\"isCoinMError\":"+istrue+",\"isPaperMError\":"+istrue+",\"isMasterError\":"+istrue+",\"isVmcError\":"+istrue+"}";
-		int i=2;
-		boolean istrue=((i%2)==0);
-		System.out.println(istrue);
-	}
+//		int i=2;
+//		boolean istrue=((i%2)==0);
+
+        DeviceInformation deviceInformation=new DeviceInformation("wisn","nihao","132343241322");
+        System.out.println(  JsonPars.toJson(deviceInformation,null,200));
+    }
 	 
 	  /**
      * 获取温度

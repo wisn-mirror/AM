@@ -1,11 +1,14 @@
 package com.wisn.bean;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author Wisn
  * 2016年9月30日   下午4:25:12
  *
  */
-public class DeviceInformation {
+public class DeviceInformation implements Serializable{
 	private 	long  id;
 	private  String userName;
 	private  String passWord;
@@ -23,12 +26,18 @@ public class DeviceInformation {
 	public DeviceInformation() {
 		super();
 	}
-	
+
+	public DeviceInformation(String userName, String passWord, String device_imei) {
+		this.userName = userName;
+		this.passWord = passWord;
+		this.device_imei = device_imei;
+	}
+
 	public DeviceInformation(long id, String device_imei, String device_imsi,
-			String device_networkoperatorname, String device_name,
-			String device_model, String device_macaddress,
-			String device_osname, String device_manufacturer,
-			String device_osversion, int device_isrooted) {
+							 String device_networkoperatorname, String device_name,
+							 String device_model, String device_macaddress,
+							 String device_osname, String device_manufacturer,
+							 String device_osversion, int device_isrooted) {
 		super();
 		this.id = id;
 		this.device_imei = device_imei;

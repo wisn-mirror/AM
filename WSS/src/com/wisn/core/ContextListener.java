@@ -1,7 +1,6 @@
 package com.wisn.core;
 
 import com.wisn.utils.LogUtils;
-import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -19,7 +18,7 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(final ServletContextEvent sc) {
         String file = sc.getServletContext().getRealPath("/WEB-INF/config_user/log4jbackup.properties");
         if (file != null) {
-            PropertyConfigurator.configure(file);
+//            PropertyConfigurator.configure(file);
         }
         LogUtils.initConfig();
         LogUtils.d("Start  Message  Server!");
@@ -38,10 +37,10 @@ public class ContextListener implements ServletContextListener {
                         HandleThreadFactory.getInstance().init().removeThread();
                     }
                 }
-                LogUtils.d("Thread check ");
+//                LogUtils.d("Thread check ");
             }
 
-        }, new Date(), 2000);
+        }, new Date(), 20000);
     }
 
     @Override
