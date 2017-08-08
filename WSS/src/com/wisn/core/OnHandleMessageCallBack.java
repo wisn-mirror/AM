@@ -6,7 +6,7 @@ package com.wisn.core;
  *
  */
 public interface OnHandleMessageCallBack {
-	void handMessageSuccess(OperationMessage message);
-	void handMessageError(OperationMessage message);
-	void handMessageStore(OperationMessage message);
+	void handMessageSuccess(Message message);
+	void handMessageError(Message message);
+	void handMessageStore(Message message);
 }

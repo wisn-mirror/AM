@@ -49,17 +49,17 @@ public class HandleThreadFactory {
 				MessageHandingThread thread = new MessageHandingThread();
 				thread.setOnHandleMessageCallBack(new OnHandleMessageCallBack() {
 					@Override
-					public void handMessageSuccess(OperationMessage message) {
+					public void handMessageSuccess(Message message) {
 						LogUtils.d("handMessageSuccess:"+message.toString());
 					}
 
 					@Override
-					public void handMessageError(OperationMessage message) {
+					public void handMessageError(Message message) {
 						LogUtils.d("handMessageError:"+message.toString());
 					}
 
 					@Override
-					public void handMessageStore(OperationMessage message) {
+					public void handMessageStore(Message message) {
 						LogUtils.d("handMessageStore:"+message.toString());
 
 					}

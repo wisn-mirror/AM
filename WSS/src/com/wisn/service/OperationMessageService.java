@@ -2,7 +2,8 @@ package com.wisn.service;
 
 import java.util.Vector;
 
-import com.wisn.core.OperationMessage;
+import com.wisn.core.Message;
+
 /**
  * 
  * @author Wisn
@@ -15,17 +16,17 @@ public interface  OperationMessageService {
 	 * @param operationMessage
 	 * @return
 	 */
-	boolean saveOperationOne(OperationMessage operationMessage);
+	boolean saveOperationOne(Message operationMessage);
 	/**
 	 * 保存消息列队中的消息
 	 * @param allList
 	 * @return
 	 */
-	boolean saveAllOperationMessage(Vector<OperationMessage> allList);
+	boolean saveAllOperationMessage(Vector<Message> allList);
 	/**
 	 * 读取本地保存的历史未执行的消息
 	 * @param OperationCode
 	 * @return
 	 */
-	Vector<OperationMessage>  getAllOperationMessageFromLocal(int OperationCode);
+	Vector<Message>  getAllOperationMessageFromLocal(int OperationCode);
 }

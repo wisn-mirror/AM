@@ -1,6 +1,6 @@
 package com.wisn.code;
 
-import com.wisn.core.OperationMessage;
+import com.wisn.core.Message;
 import com.wisn.utils.LogUtils;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
@@ -52,9 +52,9 @@ public class JsonPars {
 	}
 	//test
 	public static void main(String[] args) {
-		String json = toJson(new  OperationMessage(22, 55, System.currentTimeMillis(), System.currentTimeMillis(), "ahhah"),null, 3);
+		String json = toJson(new Message(22, 55, System.currentTimeMillis(), System.currentTimeMillis(), "ahhah"),null, 3);
 		System.out.println(json);
-//		System.out.println(fromJson(json,OperationMessage.class).toString());
+//		System.out.println(fromJson(json,Message.class).toString());
 	/*	String json1 = toJson(new  DeviceInformation("ererwq","ererwq","ererwq","ererwq","ererwq","ererwq"
 				,"ererwq","ererwq","ererwq","ererwq","ererwq",77
 				,"ererwq","ererwq"),null, 3);

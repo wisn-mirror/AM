@@ -40,8 +40,8 @@ public class MessageEntrance  extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
         try{
             if(message!=null&&!"".equals(message)){
-                OperationMessage operationMessage = JsonPars.fromJson(message, OperationMessage.class);
-                operationMessage.setMessageContext(message);
+                Message operationMessage = JsonPars.fromJson(message, Message.class);
+                operationMessage.setContent(message);
                 MessageQueue.getInstance().init().MessageQueue(operationMessage);
             }
         }catch (Exception e){

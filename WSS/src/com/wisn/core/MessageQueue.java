@@ -8,7 +8,7 @@ import java.util.Vector;
  *
  */
 public class MessageQueue {
-	private Vector<OperationMessage> queue = null;
+	private Vector<Message> queue = null;
 	private static MessageQueue messageQueue = null;
 	public  static  int  MessageCount=0;
 	public static MessageQueue getInstance() {
@@ -34,16 +34,16 @@ public class MessageQueue {
 		return messageQueue;
 	}
 
-	public synchronized void MessageQueue(OperationMessage message) {
+	public synchronized void MessageQueue(Message message) {
 		queue.addElement(message);
 		MessageCount++;
 	}
 
-	public synchronized OperationMessage pollMessage() {
+	public synchronized Message pollMessage() {
 		try {
 			if (queue.size() == 0)
 				return null;
-			OperationMessage message = queue.firstElement();
+			Message message = queue.firstElement();
 			queue.removeElementAt(0);
 			MessageCount--;
 			return message;
@@ -52,7 +52,7 @@ public class MessageQueue {
 			return null;
 		}
 	}
-	public  Vector<OperationMessage>  getAll(){
+	public  Vector<Message>  getAll(){
 		return queue;
 	}
 }

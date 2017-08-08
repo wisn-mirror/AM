@@ -4,7 +4,7 @@ import com.wisn.bean.SessionClient;
 import com.wisn.code.JsonPars;
 import com.wisn.core.IDS;
 import com.wisn.core.MessageQueue;
-import com.wisn.core.OperationMessage;
+import com.wisn.core.Message;
 import com.wisn.core.SessionFactory;
 import com.wisn.utils.LogUtils;
 
@@ -39,7 +39,7 @@ public class BaseMessage {
 		try{
 			LogUtils.d("onMessage："+identify+message);
 			if(message!=null&&!"".equals(message)){
-				OperationMessage operationMessage = JsonPars.fromJson(message, OperationMessage.class);
+				Message operationMessage = JsonPars.fromJson(message, Message.class);
 				operationMessage.setMessageContext(message);
 				MessageQueue.getInstance().init().MessageQueue(operationMessage);
 			}

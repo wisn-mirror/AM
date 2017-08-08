@@ -24,7 +24,7 @@ public class MessageHandingThread extends Thread {
 	public void run() {
 		super.run();
 		while (isRuning) {
-			OperationMessage pollMessage=null;
+			Message pollMessage=null;
 			try {
 				pollMessage= MessageQueue.getInstance().init().pollMessage();
 				if(pollMessage==null)
