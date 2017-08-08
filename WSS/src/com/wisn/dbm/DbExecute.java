@@ -1,11 +1,11 @@
 package com.wisn.dbm;
 
+import com.wisn.utils.LogUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import com.wisn.utils.LogUtils;
 
 public class DbExecute {
 	private static final int executeInsertState = 1;

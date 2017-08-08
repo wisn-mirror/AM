@@ -30,7 +30,7 @@ public class BaseMessage {
 	@OnClose
 	public  void OnClose(Session session,CloseReason closeReason){
 		if(closeReason.getCloseCode()!=CloseCodes.CANNOT_ACCEPT){
-			SessionFactory.getInstance().init().removeSession(identify);			
+			SessionFactory.getInstance().init().removeUser(identify);
 		}
 		LogUtils.d("OnClose"+identify);
 	}

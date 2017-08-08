@@ -23,10 +23,6 @@ public class RegisterServlet extends BaseServlet {
 	public RegisterServlet() {
 		super();
 	}
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request,response);
-	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			try {

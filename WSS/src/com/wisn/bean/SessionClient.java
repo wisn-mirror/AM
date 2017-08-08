@@ -39,4 +39,13 @@ public class SessionClient {
     public void setWebSocket(WebSocket webSocket) {
         this.webSocket = webSocket;
     }
+
+    public void send(String msg){
+        if(this.webSocket!=null){
+            this.webSocket.send(msg);
+        }
+        if(this.session!=null){
+            this.session.getAsyncRemote().sendText(msg);
+        }
+    }
 }

@@ -1,7 +1,7 @@
 package com.wisn.core;
 
+import com.wisn.bean.CacheUser;
 import com.wisn.bean.SessionClient;
-import com.wisn.utils.LogUtils;
 
 import java.util.LinkedHashMap;
 
@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
  *
  */
 public class SessionFactory {
-	private LinkedHashMap<Long, SessionClient> sessionQueue = null;
+	private LinkedHashMap<Long, CacheUser> sessionQueue = null;
 	private static SessionFactory sessionFactory = null;
 
 	public static SessionFactory getInstance() {
@@ -40,22 +40,38 @@ public class SessionFactory {
 		return this;
 	}
 
+	public LinkedHashMap<Long, CacheUser> getSessionQueue() {
+		return sessionQueue;
+	}
+
+
 	/**
-	 * getSession
+	 * getUser
 	 * @param id
 	 * @return
 	 */
-	public  SessionClient  getSession(long  id){
+	public CacheUser getUser(long  id){
 		return sessionQueue.get(id);
 	}
 
 	/**
-	 * removeSession
+	 * removeUser
 	 * @param id
 	 * @return
 	 */
-	public SessionClient  removeSession(long  id){
+	public CacheUser removeUser(long  id){
 		 return sessionQueue.remove(id) ;
+	}
+
+	/**
+	 *
+	 * @param id
+	 * @param cacheUser
+	 * @return
+	 */
+	public CacheUser addUser(long id, CacheUser cacheUser){
+		sessionQueue.put(id, cacheUser);
+		return cacheUser;
 	}
 
 	/**
@@ -64,11 +80,15 @@ public class SessionFactory {
 	 * @param session
 	 * @return
 	 */
-	public SessionClient  addSession(long  id,SessionClient session){
-		return  sessionQueue.put(id, session);
+	public CacheUser addSession(long  id, SessionClient session){
+		CacheUser session1 = getUser(id);
+		if(!session1.sessionClientList.contains(session)){
+			session1.sessionClientList.add(session);
+		}
+		return  session1;
 	}
 	public static void main(String[] args) {
-		LogUtils.d("时间："+System.currentTimeMillis());
+		/*LogUtils.d("时间："+System.currentTimeMillis());
 		SessionFactory init = SessionFactory.getInstance().init();
 		long  currentID=0;
 		for(int i=0;i<100000000;i++){
@@ -79,8 +99,8 @@ public class SessionFactory {
 			}
 		}
 		LogUtils.d("时间："+System.currentTimeMillis());
-		SessionClient dichotomySearch = init.getSession(currentID);
-		LogUtils.d("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);
+		SessionClient dichotomySearch = init.getUser(currentID);
+		LogUtils.d("时间："+System.currentTimeMillis()+ "  "+dichotomySearch);*/
 	}
 
 }

@@ -47,6 +47,23 @@ public class HandleThreadFactory {
 		try{
 			if (threadlist.size() < Config.initMaxHandleThread) {
 				MessageHandingThread thread = new MessageHandingThread();
+				thread.setOnHandleMessageCallBack(new OnHandleMessageCallBack() {
+					@Override
+					public void handMessageSuccess(OperationMessage message) {
+						LogUtils.d("handMessageSuccess:"+message.toString());
+					}
+
+					@Override
+					public void handMessageError(OperationMessage message) {
+						LogUtils.d("handMessageError:"+message.toString());
+					}
+
+					@Override
+					public void handMessageStore(OperationMessage message) {
+						LogUtils.d("handMessageStore:"+message.toString());
+
+					}
+				});
 				thread.start();
 				threadlist.add(thread);
 				currentThreadCount++;

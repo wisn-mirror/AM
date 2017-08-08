@@ -33,7 +33,7 @@ public class MessageEntrance  extends WebSocketServer {
 
     @Override
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
-//        SessionFactory.getInstance().init().removeSession(identify);
+//        SessionFactory.getInstance().init().removeUser(identify);
     }
 
     @Override

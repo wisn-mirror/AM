@@ -19,10 +19,6 @@ import java.io.IOException;
 @WebServlet("/web/adminLogin")
 public class AdminLoginServlet extends BaseServlet {
 	private static final long serialVersionUID = 5507001835503546202L;
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request,response);
-	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			try {

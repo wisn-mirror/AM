@@ -38,7 +38,7 @@ public class SessionFactoryBackup {
 	}
 
 	/**
-	 * getSession
+	 * getUser
 	 * @param id
 	 * @return
 	 */
@@ -47,7 +47,7 @@ public class SessionFactoryBackup {
 		return dichotomySearch(id);
 	}
 	/**
-	 * removeSession
+	 * removeUser
 	 * @param id
 	 * @return
 	 */

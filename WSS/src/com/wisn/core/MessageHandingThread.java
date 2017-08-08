@@ -1,6 +1,10 @@
 package com.wisn.core;
 
 import com.wisn.bean.SessionClient;
+import com.wisn.bean.CacheUser;
+
+import java.util.Iterator;
+
 /**
  * 
  * @author Wisn
@@ -10,7 +14,7 @@ import com.wisn.bean.SessionClient;
 public class MessageHandingThread extends Thread {
 	public boolean isRuning = true;
 	private  OnHandleMessageCallBack onHandleMessageCallBack;
-	
+
 	public void setOnHandleMessageCallBack(
 			OnHandleMessageCallBack onHandleMessageCallBack) {
 		this.onHandleMessageCallBack = onHandleMessageCallBack;
@@ -25,12 +29,14 @@ public class MessageHandingThread extends Thread {
 				pollMessage= MessageQueue.getInstance().init().pollMessage();
 				if(pollMessage==null)
 					break;
-				SessionClient session = SessionFactory.getInstance().init()
-						.getSession(pollMessage.getMessageSendToID());
-				if (session != null) {
+				CacheUser cacheUser = SessionFactory.getInstance().init().getUser(pollMessage.getMessageSendToID());
+				if (cacheUser != null) {
 					synchronized (pollMessage) {
-						session.getSession().getAsyncRemote().sendText(
-								pollMessage.getMessageContext());
+						Iterator<SessionClient> iterator = cacheUser.sessionClientList.iterator();
+						while(iterator.hasNext()){
+							SessionClient next = iterator.next();
+							next.send(pollMessage.getMessageContext());
+						}
 						//handle  message  success
 						if(onHandleMessageCallBack!=null){
 							onHandleMessageCallBack.handMessageSuccess(pollMessage);
