@@ -32,7 +32,7 @@ public class AppRegister extends BaseServlet {
 				String requestContent=acceptJSON(request);
 				//添加验证码验证
 				if(requestContent==null||"".equals(requestContent)){
-					jsonResponse=JsonPars.toJson("",new Result(" Lack of necessary parameters ",""), 500);
+					jsonResponse=JsonPars.toJsonMessage("",new Result(" Lack of necessary parameters ",""), 500);
 				}else{
 					DeviceInformation loginParamter = JsonPars.fromJson(requestContent, DeviceInformation.class);
 					//验证身份
@@ -40,13 +40,13 @@ public class AppRegister extends BaseServlet {
 					IDS.addId(userid);
 					User user=new User(userid,loginParamter.getUserName(),loginParamter.getPassWord());
 					if(user==null){
-						jsonResponse=JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500);
+						jsonResponse=JsonPars.toJsonMessage("",new Result(" ERROR Incorrect username or password  ",null), 500);
 					}else{
-						jsonResponse=JsonPars.toJson(user,null, 200);
+						jsonResponse=JsonPars.toJsonMessage(user,null, 200);
 					}
 				}
 			} catch (Exception e) {
-				jsonResponse=JsonPars.toJson("",new Result("  Server  Error ",e.getMessage()), 500);
+				jsonResponse=JsonPars.toJsonMessage("",new Result("  Server  Error ",e.getMessage()), 500);
 			}finally {
 				responseJson(response,jsonResponse);
 			}

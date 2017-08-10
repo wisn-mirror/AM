@@ -40,7 +40,6 @@ public class BaseMessage {
 			LogUtils.d("onMessage："+identify+message);
 			if(message!=null&&!"".equals(message)){
 				Message operationMessage = JsonPars.fromJson(message, Message.class);
-				operationMessage.setMessageContext(message);
 				MessageQueue.getInstance().init().MessageQueue(operationMessage);
 			}
 		}catch (Exception e){

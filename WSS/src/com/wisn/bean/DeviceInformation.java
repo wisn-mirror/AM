@@ -152,6 +152,23 @@ public class DeviceInformation implements Serializable{
 	public void setDevice_isrooted(int device_isrooted) {
 		this.device_isrooted = device_isrooted;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "DeviceInformation{" +
+				"id=" + id +
+				", userName='" + userName + '\'' +
+				", passWord='" + passWord + '\'' +
+				", device_imei='" + device_imei + '\'' +
+				", device_imsi='" + device_imsi + '\'' +
+				", device_networkoperatorname='" + device_networkoperatorname + '\'' +
+				", device_name='" + device_name + '\'' +
+				", device_model='" + device_model + '\'' +
+				", device_macaddress='" + device_macaddress + '\'' +
+				", device_osname='" + device_osname + '\'' +
+				", device_manufacturer='" + device_manufacturer + '\'' +
+				", device_osversion='" + device_osversion + '\'' +
+				", device_isrooted=" + device_isrooted +
+				'}';
+	}
 }

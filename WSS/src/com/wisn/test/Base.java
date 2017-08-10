@@ -4,7 +4,6 @@
 package com.wisn.test;
 
 import com.wisn.bean.DeviceInformation;
-import com.wisn.code.JsonPars;
 
 import java.util.List;
 
@@ -56,7 +55,7 @@ public class Base {
 //		boolean istrue=((i%2)==0);
 
         DeviceInformation deviceInformation=new DeviceInformation("wisn","nihao","132343241322");
-        System.out.println(  JsonPars.toJson(deviceInformation,null,200));
+//        System.out.println(  JsonPars.toJson(deviceInformation,null,200));
     }
 	 
 	  /**

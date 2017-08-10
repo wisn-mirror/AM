@@ -2,6 +2,7 @@ package com.wisn.core;
 
 import com.wisn.bean.SessionClient;
 import com.wisn.bean.CacheUser;
+import com.wisn.code.JsonPars;
 
 import java.util.Iterator;
 
@@ -35,7 +36,7 @@ public class MessageHandingThread extends Thread {
 						Iterator<SessionClient> iterator = cacheUser.sessionClientList.iterator();
 						while(iterator.hasNext()){
 							SessionClient next = iterator.next();
-							next.send(pollMessage.getMessageContext());
+							next.send(JsonPars.toJson(pollMessage));
 						}
 						//handle  message  success
 						if(onHandleMessageCallBack!=null){

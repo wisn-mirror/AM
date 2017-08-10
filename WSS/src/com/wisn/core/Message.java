@@ -7,6 +7,7 @@ package com.wisn.core;
   *
   */
 public class Message {
+
 	/**
 	 * 需要发送给用户的id
 	 */
@@ -17,6 +18,9 @@ public class Message {
 	 */
 	private long messageFromID=0;
 
+	/**
+	 * 消息类型
+	 */
 	private  int messageType;
 	
 	/**
@@ -28,6 +32,8 @@ public class Message {
 	 * 消息内容
 	 */
 	private String   content;
+
+
 	public Message() {
 		super();
 	}

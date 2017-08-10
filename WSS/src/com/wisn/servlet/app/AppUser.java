@@ -37,13 +37,13 @@ public class AppUser extends BaseServlet {
 			String requestContent=acceptJSON(req);
 			//添加验证码验证
 			if(requestContent==null||"".equals(requestContent)){
-				jsonResponse=JsonPars.toJson("",new Result(" Lack of necessary parameters ",""), 500);
+				jsonResponse=JsonPars.toJsonMessage("",new Result(" Lack of necessary parameters ",""), 500);
 			}else{
 				LinkedHashMap<Long, CacheUser> sessionQueue = SessionFactory.getInstance().getSessionQueue();
-				jsonResponse=JsonPars.toJson(sessionQueue,null, 200);
+				jsonResponse=JsonPars.toJsonMessage(sessionQueue,null, 200);
 			}
 		} catch (Exception e) {
-			jsonResponse=JsonPars.toJson("",new Result("  Server  Error ",e.getMessage()), 500);
+			jsonResponse=JsonPars.toJsonMessage("",new Result("  Server  Error ",e.getMessage()), 500);
 		}finally {
 			responseJson(resp,jsonResponse);
 		}
@@ -53,9 +53,9 @@ public class AppUser extends BaseServlet {
 			throws ServletException, IOException {
 		String jsonResponse="";
 			try {
-				jsonResponse=JsonPars.toJson("",new Result(" Lack of necessary parameters ",""), 500);
+				jsonResponse=JsonPars.toJsonMessage("",new Result(" Lack of necessary parameters ",""), 500);
 			} catch (Exception e) {
-				jsonResponse=JsonPars.toJson("",new Result("  Server  Error ",e.getMessage()), 500);
+				jsonResponse=JsonPars.toJsonMessage("",new Result("  Server  Error ",e.getMessage()), 500);
 			}finally {
 				responseJson(response,jsonResponse);
 			}
