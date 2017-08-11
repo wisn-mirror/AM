@@ -16,7 +16,7 @@ import java.util.Random;
  * @time 2015年12月1日下午8:13:08
  *
  */
-@WebServlet("/identifyingCode")
+@WebServlet(ConstAPI.IDENTIFY_CODE)
 public class CodeServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
     public CodeServlet() {

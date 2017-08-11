@@ -6,6 +6,7 @@ import com.wisn.core.IDS;
 import com.wisn.core.MessageQueue;
 import com.wisn.core.Message;
 import com.wisn.core.SessionFactory;
+import com.wisn.servlet.ConstAPI;
 import com.wisn.utils.LogUtils;
 
 import javax.websocket.*;
@@ -19,7 +20,7 @@ import java.io.IOException;
  * 2016年9月30日   上午9:26:24
  *
  */
-@ServerEndpoint(value = "/ProtocolMessage/{identify}")
+@ServerEndpoint(value = ConstAPI.BASE_MESSAGE)
 public class BaseMessage {
 	private    long  identify=-1;
 	@OnError

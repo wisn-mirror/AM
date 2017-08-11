@@ -7,6 +7,7 @@ import com.wisn.code.JsonPars;
 import com.wisn.core.IDS;
 import com.wisn.core.SessionFactory;
 import com.wisn.servlet.BaseServlet;
+import com.wisn.servlet.ConstAPI;
 import com.wisn.utils.LogUtils;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ import java.io.IOException;
  * 2016年9月30日   上午9:26:14
  *
  */
-@WebServlet("/app/applogin")
+@WebServlet(ConstAPI.APP_LOGIN)
 public class AppLogin extends BaseServlet {
     private static final long serialVersionUID = 5507001835503546202L;
 

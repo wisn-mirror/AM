@@ -11,7 +11,7 @@ public class JsonPars {
 	 * @param message  {"code":    ,"content":{} }
 	 * @return
 	 */
-	public static <T> T  fromMessageJson(String message,Class<T>  clazz)throws Exception{
+	public static <T> T  fromJsonMessage(String message,Class<T>  clazz)throws Exception{
 		T bean=null;
 		try {
 			JSONObject fromObject =JSONObject.fromObject(message);
@@ -90,10 +90,19 @@ public class JsonPars {
 
 	//test
 	public static void main(String[] args) {
+		try{
+			String json = toJson(new User(432431,"43241","4321431"));
+			System.out.println(json);
+			System.out.println(fromJson(json,User.class).toString());
+
+			String json1 = toJsonMessage(new User(432431,"43241","4321431"),null,200);
+			System.out.println(json1);
+			System.out.println(fromJsonMessage(json1,User.class).toString());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 //		String json = toJson(new Message(22, 55, System.currentTimeMillis(), System.currentTimeMillis(), "ahhah"),null, 3);
-		String json = toJson(new User(432431,"43241","4321431"));
-		System.out.println(json);
-//		System.out.println(fromJson(json,User.class).toString());
+
 	/*	String json1 = toJson(new  DeviceInformation("ererwq","ererwq","ererwq","ererwq","ererwq","ererwq"
 				,"ererwq","ererwq","ererwq","ererwq","ererwq",77
 				,"ererwq","ererwq"),null, 3);
