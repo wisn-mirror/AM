@@ -1,5 +1,9 @@
-package com.wisn.core;
+package com.wisn.core.factory;
 
+import com.wisn.core.Config;
+import com.wisn.core.Message;
+import com.wisn.core.MessageHandingThread;
+import com.wisn.core.OnHandleMessageCallBack;
 import com.wisn.utils.LogUtils;
 
 import java.util.Vector;
@@ -11,7 +15,7 @@ import java.util.Vector;
  */
 public class HandleThreadFactory {
 	private Vector<MessageHandingThread> threadlist = null;
-	public  static  int  currentThreadCount=Config.initMaxHandleThread / 2;
+	public  static  int  currentThreadCount= Config.initMaxHandleThread / 2;
 	private  static  HandleThreadFactory  handleThreadFactory=null;
 	public static HandleThreadFactory getInstance() {
 		if (handleThreadFactory == null) {
@@ -24,7 +28,9 @@ public class HandleThreadFactory {
 		}
 		return handleThreadFactory;
 	}
-	
+
+	private HandleThreadFactory(){}
+
 	public  HandleThreadFactory init() {
 		if (threadlist == null) {
 			synchronized (MessageQueueFactory.class) {

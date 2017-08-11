@@ -3,7 +3,7 @@ package com.wisn.servlet.app;
 import com.wisn.bean.CacheUser;
 import com.wisn.bean.Result;
 import com.wisn.code.JsonPars;
-import com.wisn.core.SessionFactory;
+import com.wisn.core.factory.SessionFactory;
 import com.wisn.servlet.BaseServlet;
 import com.wisn.servlet.ConstAPI;
 

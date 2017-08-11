@@ -3,9 +3,9 @@ package com.wisn.servlet.ws;
 import com.wisn.bean.SessionClient;
 import com.wisn.code.JsonPars;
 import com.wisn.core.IDS;
-import com.wisn.core.MessageQueueFactory;
+import com.wisn.core.factory.MessageQueueFactory;
 import com.wisn.core.Message;
-import com.wisn.core.SessionFactory;
+import com.wisn.core.factory.SessionFactory;
 import com.wisn.servlet.ConstAPI;
 import com.wisn.utils.LogUtils;
 

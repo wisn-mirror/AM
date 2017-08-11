@@ -1,4 +1,6 @@
-package com.wisn.core;
+package com.wisn.core.factory;
+
+import com.wisn.core.Message;
 
 import java.util.Vector;
 /**
@@ -22,7 +24,7 @@ public class MessageQueueFactory {
 		}
 		return messageQueue;
 	}
-
+	private MessageQueueFactory(){}
 	public MessageQueueFactory init() {
 		if (queue == null) {
 			synchronized (MessageQueueFactory.class) {

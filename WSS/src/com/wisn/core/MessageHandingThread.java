@@ -3,6 +3,8 @@ package com.wisn.core;
 import com.wisn.bean.SessionClient;
 import com.wisn.bean.CacheUser;
 import com.wisn.code.JsonPars;
+import com.wisn.core.factory.MessageQueueFactory;
+import com.wisn.core.factory.SessionFactory;
 
 import java.util.Iterator;
 

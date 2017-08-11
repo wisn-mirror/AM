@@ -1,5 +1,8 @@
 package com.wisn.core;
 
+import com.wisn.core.factory.HandleThreadFactory;
+import com.wisn.core.factory.MessageQueueFactory;
+import com.wisn.core.factory.SessionFactory;
 import com.wisn.utils.LogUtils;
 
 import javax.servlet.ServletContextEvent;

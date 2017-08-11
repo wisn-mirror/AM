@@ -1,4 +1,4 @@
-package com.wisn.core;
+package com.wisn.core.factory;
 
 import com.wisn.bean.CacheUser;
 import com.wisn.bean.SessionClient;
@@ -27,7 +27,7 @@ public class SessionFactory {
 		}
 		return sessionFactory;
 	}
-
+	private SessionFactory(){}
 	public  SessionFactory init() {
 		if (sessionQueue == null) {
 			synchronized (MessageQueueFactory.class) {

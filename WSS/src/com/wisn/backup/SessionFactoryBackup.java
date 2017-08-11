@@ -1,6 +1,6 @@
 package com.wisn.backup;
 
-import com.wisn.core.MessageQueueFactory;
+import com.wisn.core.factory.MessageQueueFactory;
 import com.wisn.test.testSession;
 import com.wisn.utils.LogUtils;
 
