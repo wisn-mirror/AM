@@ -24,17 +24,19 @@ public class ContextListener implements ServletContextListener {
         LogUtils.d("Start  Message  Server!");
         new Config().intConfig(sc.getServletContext());
         HandleThreadFactory.getInstance().init().startService();
+        SessionFactory.getInstance().init();
+        MessageQueueFactory.getInstance().init();
         //初始化数据，加载所有的id到IDS中
         //sc.getServletContext().setAttribute("online", 0);
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (MessageQueue.getInstance().init().MessageCount > Config.initEveryThreadMessage) {
+                if (MessageQueueFactory.getInstance().MessageCount > Config.initEveryThreadMessage) {
                     HandleThreadFactory.getInstance().init().addThread();
                 } else {
-                    if (HandleThreadFactory.getInstance().init().currentThreadCount > Config.initHalfHandleThread) {
-                        HandleThreadFactory.getInstance().init().removeThread();
+                    if (HandleThreadFactory.getInstance().currentThreadCount > Config.initHalfHandleThread) {
+                        HandleThreadFactory.getInstance().removeThread();
                     }
                 }
 //                LogUtils.d("Thread check ");

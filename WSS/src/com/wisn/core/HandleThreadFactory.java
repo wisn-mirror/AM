@@ -27,7 +27,7 @@ public class HandleThreadFactory {
 	
 	public  HandleThreadFactory init() {
 		if (threadlist == null) {
-			synchronized (MessageQueue.class) {
+			synchronized (MessageQueueFactory.class) {
 				if (threadlist == null) {
 					threadlist = new Vector<>();
 				}

@@ -7,15 +7,15 @@ import java.util.Vector;
  * 2016年9月30日   上午9:23:49
  *
  */
-public class MessageQueue {
+public class MessageQueueFactory {
 	private Vector<Message> queue = null;
-	private static MessageQueue messageQueue = null;
+	private static MessageQueueFactory messageQueue = null;
 	public  static  int  MessageCount=0;
-	public static MessageQueue getInstance() {
+	public static MessageQueueFactory getInstance() {
 		if (messageQueue == null) {
-			synchronized (MessageQueue.class) {
+			synchronized (MessageQueueFactory.class) {
 				if (messageQueue == null) {
-					messageQueue = new MessageQueue();
+					messageQueue = new MessageQueueFactory();
 				}
 				return messageQueue;
 			}
@@ -23,9 +23,9 @@ public class MessageQueue {
 		return messageQueue;
 	}
 
-	public  MessageQueue init() {
+	public MessageQueueFactory init() {
 		if (queue == null) {
-			synchronized (MessageQueue.class) {
+			synchronized (MessageQueueFactory.class) {
 				if (queue == null) {
 					queue = new Vector<>();
 				}

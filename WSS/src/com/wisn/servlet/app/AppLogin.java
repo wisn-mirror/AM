@@ -37,11 +37,14 @@ public class AppLogin extends BaseServlet {
                 jsonResponse = JsonPars.toJsonMessage("", new Result(" Lack of necessary parameters ", ""), 500);
             } else {
                 User user = JsonPars.fromJson(requestContent, User.class);
+                LogUtils.d(user.toString());
                 //验证身份
                 if (IDS.getId(user.getId())) {
                     CacheUser cacheUser = new CacheUser(user.id, user.token, user.name, user.password);
                     SessionFactory.getInstance().addUser(user.getId(), cacheUser);
                     jsonResponse = JsonPars.toJsonMessage(cacheUser, null, 200);
+                }else{
+                    jsonResponse = JsonPars.toJsonMessage("", new Result(" please register ", ""), 500);
                 }
             }
         } catch (Exception e) {

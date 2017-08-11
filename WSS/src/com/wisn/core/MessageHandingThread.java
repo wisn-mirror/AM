@@ -27,10 +27,10 @@ public class MessageHandingThread extends Thread {
 		while (isRuning) {
 			Message pollMessage=null;
 			try {
-				pollMessage= MessageQueue.getInstance().init().pollMessage();
+				pollMessage= MessageQueueFactory.getInstance().init().pollMessage();
 				if(pollMessage==null)
 					break;
-				CacheUser cacheUser = SessionFactory.getInstance().init().getUser(pollMessage.getMessageSendToID());
+				CacheUser cacheUser = SessionFactory.getInstance().getUser(pollMessage.getMessageSendToID());
 				if (cacheUser != null) {
 					synchronized (pollMessage) {
 						Iterator<SessionClient> iterator = cacheUser.sessionClientList.iterator();

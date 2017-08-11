@@ -3,7 +3,7 @@ package com.wisn.servlet.ws;
 import com.wisn.bean.SessionClient;
 import com.wisn.code.JsonPars;
 import com.wisn.core.IDS;
-import com.wisn.core.MessageQueue;
+import com.wisn.core.MessageQueueFactory;
 import com.wisn.core.Message;
 import com.wisn.core.SessionFactory;
 import com.wisn.servlet.ConstAPI;
@@ -31,7 +31,7 @@ public class BaseMessage {
 	@OnClose
 	public  void OnClose(Session session,CloseReason closeReason){
 		if(closeReason.getCloseCode()!=CloseCodes.CANNOT_ACCEPT){
-			SessionFactory.getInstance().init().removeUser(identify);
+			SessionFactory.getInstance().removeUser(identify);
 		}
 		LogUtils.d("OnClose"+identify);
 	}
@@ -41,7 +41,7 @@ public class BaseMessage {
 			LogUtils.d("onMessage："+identify+message);
 			if(message!=null&&!"".equals(message)){
 				Message operationMessage = JsonPars.fromJson(message, Message.class);
-				MessageQueue.getInstance().init().MessageQueue(operationMessage);
+				MessageQueueFactory.getInstance().init().MessageQueue(operationMessage);
 			}
 		}catch (Exception e){
 			e.printStackTrace();

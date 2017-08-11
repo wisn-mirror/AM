@@ -1,6 +1,6 @@
 package com.wisn.backup;
 
-import com.wisn.core.MessageQueue;
+import com.wisn.core.MessageQueueFactory;
 import com.wisn.test.testSession;
 import com.wisn.utils.LogUtils;
 
@@ -27,7 +27,7 @@ public class SessionFactoryBackup {
 
 	public  SessionFactoryBackup init() {
 		if (sessionQueue == null) {
-			synchronized (MessageQueue.class) {
+			synchronized (MessageQueueFactory.class) {
 				if (sessionQueue == null) {
 					sessionQueue = new LinkedList<PackSession>();
 					return this;

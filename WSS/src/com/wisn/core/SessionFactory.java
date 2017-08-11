@@ -30,7 +30,7 @@ public class SessionFactory {
 
 	public  SessionFactory init() {
 		if (sessionQueue == null) {
-			synchronized (MessageQueue.class) {
+			synchronized (MessageQueueFactory.class) {
 				if (sessionQueue == null) {
 					sessionQueue = new LinkedHashMap<>();
 					return this;

@@ -1,5 +1,6 @@
 package com.wisn.code;
 
+import com.wisn.bean.DeviceInformation;
 import com.wisn.bean.User;
 import com.wisn.utils.LogUtils;
 import net.sf.json.JSONException;
@@ -91,6 +92,10 @@ public class JsonPars {
 	//test
 	public static void main(String[] args) {
 		try{
+			String json0 = toJson(new DeviceInformation("rerwerew","43241","4321431"));
+			System.out.println(json0);
+			System.out.println(fromJson(json0,User.class).toString());
+
 			String json = toJson(new User(432431,"43241","4321431"));
 			System.out.println(json);
 			System.out.println(fromJson(json,User.class).toString());

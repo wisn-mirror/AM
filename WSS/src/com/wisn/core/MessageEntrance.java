@@ -16,7 +16,7 @@ public class MessageEntrance  extends WebSocketServer {
         try{
             long identify =Long.parseLong(handshake.getResourceDescriptor());
             if(IDS.getId(identify)){
-                SessionFactory.getInstance().init().addSession(identify,new SessionClient(conn));
+                SessionFactory.getInstance().addSession(identify,new SessionClient(conn));
             }else{
                 try {
                     conn.close();
@@ -42,7 +42,7 @@ public class MessageEntrance  extends WebSocketServer {
             if(message!=null&&!"".equals(message)){
                 Message operationMessage = JsonPars.fromJson(message, Message.class);
                 operationMessage.setContent(message);
-                MessageQueue.getInstance().init().MessageQueue(operationMessage);
+                MessageQueueFactory.getInstance().init().MessageQueue(operationMessage);
             }
         }catch (Exception e){
             e.printStackTrace();

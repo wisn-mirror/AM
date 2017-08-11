@@ -7,6 +7,7 @@ public class User {
     public  String password;
 
     public User() {
+        super();
     }
 
     public User(long id, String token, String name) {

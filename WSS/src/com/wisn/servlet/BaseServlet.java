@@ -79,6 +79,7 @@ public class BaseServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        LogUtils.d(acceptjson);
         return acceptjson;
     }
 }
