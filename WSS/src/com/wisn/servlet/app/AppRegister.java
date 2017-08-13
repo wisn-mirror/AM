@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Random;
 
 /***
  * 
@@ -37,9 +36,8 @@ public class AppRegister extends BaseServlet {
 				}else{
 					DeviceInformation loginParamter = JsonPars.fromJson(requestContent, DeviceInformation.class);
 					//验证身份
-					long userid=(long)(new Random().nextDouble()*1000);
-					IDS.addId(userid);
-					User user=new User(userid,loginParamter.getUserName(),loginParamter.getPassWord());
+					IDS.addId(loginParamter.getUserName().hashCode());
+					User user=new User(loginParamter.getUserName().hashCode(),loginParamter.getUserName(),loginParamter.getPassWord());
 					if(user==null){
 						jsonResponse=JsonPars.toJsonMessage("",new Result(" ERROR Incorrect username or password  ",null), 500);
 					}else{

@@ -39,8 +39,8 @@ public class AppLogin extends BaseServlet {
                 User user = JsonPars.fromJson(requestContent, User.class);
                 LogUtils.d(user.toString());
                 //验证身份
-                if (IDS.getId(user.getId())) {
-                    CacheUser cacheUser = new CacheUser(user.id, user.token, user.name, user.password);
+                if (IDS.getId(user.getName().hashCode())) {
+                    CacheUser cacheUser = new CacheUser(user.getName().hashCode(), user.token, user.name, user.password);
                     SessionFactory.getInstance().addUser(user.getId(), cacheUser);
                     jsonResponse = JsonPars.toJsonMessage(cacheUser, null, 200);
                 }else{
@@ -48,6 +48,7 @@ public class AppLogin extends BaseServlet {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
             jsonResponse = JsonPars.toJsonMessage("", new Result("  Server  Error ", e.getMessage()), 500);
         } finally {
             responseJson(response, jsonResponse);
