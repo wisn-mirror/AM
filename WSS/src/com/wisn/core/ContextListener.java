@@ -3,6 +3,7 @@ package com.wisn.core;
 import com.wisn.core.factory.HandleThreadFactory;
 import com.wisn.core.factory.MessageQueueFactory;
 import com.wisn.core.factory.SessionFactory;
+import com.wisn.servlet.ConstAPI;
 import com.wisn.utils.LogUtils;
 
 import javax.servlet.ServletContextEvent;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 /**
  * @author Wisn
  * 2016年9月30日   上午9:23:26
@@ -18,19 +20,22 @@ import java.util.TimerTask;
 public class ContextListener implements ServletContextListener {
 
     @Override
-    public void contextInitialized(final ServletContextEvent sc) {
+    public void contextInitialized(ServletContextEvent sc) {
+        initServerConfig(sc);
+        initService();
+        initTimer();
+    }
+
+    private void initServerConfig(ServletContextEvent sc) {
         String file = sc.getServletContext().getRealPath("/WEB-INF/config_user/log4jbackup.properties");
         if (file != null) {
 //            PropertyConfigurator.configure(file);
         }
         LogUtils.initConfig();
-        LogUtils.d("Start  Message  Server!");
-        new Config().intConfig(sc.getServletContext());
-        HandleThreadFactory.getInstance().init().startService();
-        SessionFactory.getInstance().init();
-        MessageQueueFactory.getInstance().init();
-        //初始化数据，加载所有的id到IDS中
-        //sc.getServletContext().setAttribute("online", 0);
+        Config.intConfig(sc.getServletContext());
+    }
+
+    private void initTimer() {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -42,7 +47,6 @@ public class ContextListener implements ServletContextListener {
                         HandleThreadFactory.getInstance().removeThread();
                     }
                 }
-//                LogUtils.d("Thread check ");
             }
 
         }, new Date(), 20000);
@@ -53,5 +57,21 @@ public class ContextListener implements ServletContextListener {
         LogUtils.d("Stop  Message  Server!");
         //TODO  存储所有消息列队中的消息
         HandleThreadFactory.getInstance().init().removeAllThread();
+    }
+
+    public void initService() {
+        try {
+            HandleThreadFactory.getInstance().init().startService();
+            LogUtils.d("HandleThread started!");
+            SessionFactory.getInstance().init();
+            LogUtils.d("SessionThread started!");
+            MessageQueueFactory.getInstance().init();
+            LogUtils.d("MessageThread started!");
+            MessageEntrance server = new MessageEntrance(ConstAPI.WS_PORT);
+            server.start();
+            LogUtils.d("MessageEntrance started!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

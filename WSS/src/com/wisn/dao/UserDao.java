@@ -1,5 +1,6 @@
 package com.wisn.dao;
 
+import com.wisn.bean.DeviceInformation;
 import com.wisn.bean.User;
 import com.wisn.dbm.DbExecute;
 import com.wisn.dbm.ResultSetCallBack;
@@ -7,10 +8,9 @@ import com.wisn.dbm.ResultSetCallBack;
 import java.sql.ResultSet;
 
 public class UserDao {
-    public User  addUser(String username,String password){
+    public DeviceInformation  addUser(DeviceInformation deviceInformation){
         DbExecute db=new DbExecute();
-        final User user=new  User();
-        db.executePrepareQuery("select * from user where  name=?  and password=? ", new  ResultSetCallBack() {
+        db.executeInsertOrUpdate("INSERT  into test(contents) VALUE (43243) ", new  ResultSetCallBack() {
 
             @Override
             public void executeRowCount(int id) {
@@ -20,12 +20,7 @@ public class UserDao {
             public void executeResult(ResultSet resultSet) {
                 try{
                     boolean exist = resultSet.next();
-                    if(exist){
-                        String  name=resultSet.getString("name");
-                        String  password=resultSet.getString("password");
-                        user.setName(name);
-                        user.setPassword(password);
-                    }
+
                 }catch(Exception e ){
                     e.printStackTrace();
                 }
@@ -34,8 +29,8 @@ public class UserDao {
             @Override
             public void executeGeneratedKeys(ResultSet resultSet) {
             }
-        },username,password);
-        return user;
+        });
+        return deviceInformation;
     }
 
     public User  getUser(String username,String password){

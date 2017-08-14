@@ -9,12 +9,25 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+
 /**
  *
  */
 public class MessageEntrance  extends WebSocketServer {
+    public MessageEntrance( int port ) throws UnknownHostException {
+        super( new InetSocketAddress( port ) );
+    }
+
+    public MessageEntrance( InetSocketAddress address ) {
+        super( address );
+    }
+
+
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
+        LogUtils.d( "onOpen:=getHttpStatusMessage:" + handshake.getResourceDescriptor());
         try{
             long identify =Long.parseLong(handshake.getResourceDescriptor());
             if(IDS.getId(identify)){
@@ -24,7 +37,7 @@ public class MessageEntrance  extends WebSocketServer {
                     conn.close();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    LogUtils.e("close session  error:"+e.toString());
+                    LogUtils.e("onOpen:=close session  error:"+e.toString());
                 }
             }
         }catch (NumberFormatException e){
@@ -35,11 +48,12 @@ public class MessageEntrance  extends WebSocketServer {
 
     @Override
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
-//        SessionFactory.getInstance().init().removeUser(identify);
+        LogUtils.d("onClose:=code:"+code + "reason:" + reason + " remote:" + remote);
     }
 
     @Override
     public void onMessage(WebSocket conn, String message) {
+        LogUtils.d("onMessage:=message:" + message);
         try{
             if(message!=null&&!"".equals(message)){
                 Message operationMessage = JsonPars.fromJson(message, Message.class);
@@ -49,11 +63,11 @@ public class MessageEntrance  extends WebSocketServer {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     @Override
     public void onError(WebSocket conn, Exception ex) {
+        LogUtils.e( "onError:=Exception:" + ex.getMessage());
 
     }
 

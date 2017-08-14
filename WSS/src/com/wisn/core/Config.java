@@ -12,16 +12,16 @@ import java.util.Properties;
  * @author Wisn 2016年9月30日 上午9:23:21
  */
 public class Config {
-    public static int initMaxHandleThread = 6;
-    public static int initHalfHandleThread = 3;
-    public static int initEveryThreadMessage = 20;
-    public static String DBClassName = "com.mysql.jdbc.Driver";
-    public static String DBName = "am_sys";
-    public static String DBUrl = "jdbc:mysql://localhost:3306/";
-    public static String DBUser = "root";
-    public static String DBPassword = "123456";
+    public  static int initMaxHandleThread = 6;
+    public  static int initHalfHandleThread = 3;
+    public  static int initEveryThreadMessage = 20;
+    public  static String DBClassName = "com.mysql.jdbc.Driver";
+    public  static String DBName = "am_sys";
+    public  static String DBUrl = "jdbc:mysql://localhost:3306/";
+    public  static String DBUser = "root";
+    public  static String DBPassword = "123456";
 
-    public void intConfig(ServletContext context) {
+    public static void intConfig(ServletContext context) {
         /*
 		 * ResourceBundle rb=ResourceBundle.getBundle("com.wisn.jdbc.jdbc");
 		 * initMaxHandleThread=(Integer) rb.getObject("initMaxHandleThread");
@@ -62,7 +62,7 @@ public class Config {
         }
     }
 
-    private void printInfo() {
+    private static  void printInfo() {
         LogUtils.d("initMaxHandleThread:" + initMaxHandleThread);
         LogUtils.d("initHalfHandleThread:" + initHalfHandleThread);
         LogUtils.d("initEveryThreadMessage:" + initEveryThreadMessage);

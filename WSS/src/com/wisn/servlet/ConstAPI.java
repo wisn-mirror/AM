@@ -8,4 +8,5 @@ public class ConstAPI {
     public static final String BASE_MESSAGE="/ProtocolMessage/{identify}";
     public static final String IDENTIFY_CODE="/identifyingCode";
 
+    public static final int WS_PORT=8898;
 }

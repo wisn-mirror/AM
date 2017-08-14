@@ -1,20 +1,20 @@
 package com.wisn.serviceimpl;
 
 import com.wisn.bean.DeviceInformation;
-import com.wisn.service.DeviceInfoService;
+import com.wisn.service.DeviceUserInfoService;
 
-public class DeviceInfoServiceImpl  implements DeviceInfoService {
+public class DeviceInfoServiceImpl  implements DeviceUserInfoService {
 
 	@Override
 	public DeviceInformation checkDeviceInformation(
-			DeviceInformation loginInfoParameter) {
+			DeviceInformation deviceInformation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public DeviceInformation addDeviceInformation(
-			DeviceInformation loginInfoParameter) {
+			DeviceInformation deviceInformation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
