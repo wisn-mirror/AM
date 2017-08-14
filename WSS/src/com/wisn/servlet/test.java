@@ -17,7 +17,6 @@ public class test extends BaseServlet {
             throws ServletException, IOException {
         try {
             insertTest();
-
         } catch (Exception e) {
             e.printStackTrace();
             LogUtils.e("AdminLoginServlet:"+e.toString());

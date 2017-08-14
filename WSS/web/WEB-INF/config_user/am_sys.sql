@@ -25,23 +25,19 @@ CREATE TABLE admin (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-DROP TABLE IF EXISTS user_device;
-CREATE TABLE user_device(
-  id int(10) NOT NULL auto_increment,
-	name varchar(50) default NULL,
+DROP TABLE IF EXISTS user_profile;
+	CREATE TABLE user_profile(
+	id int(10) NOT NULL auto_increment,
+	username varchar(50) default NULL,
 	password varchar(50) default NULL,
 	phone varchar(20) default NULL,
 	email varchar(50) default NULL,
+	icon varchar(50) default NULL,
+	company varchar(50) default NULL,
 	registertime varchar(20) default NULL,
-	device_imei varchar(20) default NULL,
-	device_imsi varchar(20) default NULL,
-	device_name varchar(50) default NULL,
-	device_macaddress varchar(30) default NULL,
-	device_osname varchar(30) default NULL,
-	device_osversion varchar(10) default NULL,
-  PRIMARY KEY  (id)
+	device_imei varchar(20) default NULL
+	PRIMARY KEY  (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-SELECT id, device_imei, device_imsi, registerip, registermac, phone, email, name, password, registertime, device_networkoperatorname, device_name, device_model, device_macaddress, device_osname, device_manufacturer, device_osversion, device_isrooted FROM user_device;
 
 CREATE TABLE test(
     id int(10) NOT NULL auto_increment,
