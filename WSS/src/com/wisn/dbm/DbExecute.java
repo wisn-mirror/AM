@@ -95,7 +95,7 @@ public class DbExecute {
 	 * @param sql
 	 * @param resultSetCallBack
 	 */
-	public void executeInsert(String sql, ResultSetCallBack resultSetCallBack) {
+	public void executeInsertOrUpdate(String sql, ResultSetCallBack resultSetCallBack) {
 		execute(executeInsertState, null, sql, resultSetCallBack);
 	}
 

@@ -41,33 +41,8 @@ public class UserDao {
     public User  getUser(String username,String password){
         DbExecute db=new DbExecute();
         final User user=new  User();
-        db.executePrepareQuery("insert into ", new  ResultSetCallBack() {
 
-            @Override
-            public void executeRowCount(int id) {
-            }
-
-            @Override
-            public void executeResult(ResultSet resultSet) {
-                try{
-                    boolean exist = resultSet.next();
-                    if(exist){
-                        String  name=resultSet.getString("name");
-                        String  password=resultSet.getString("password");
-                        user.setName(name);
-                        user.setPassword(password);
-                    }
-                }catch(Exception e ){
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void executeGeneratedKeys(ResultSet resultSet) {
-            }
-        },username,password);
         return user;
     }
-
 
 }

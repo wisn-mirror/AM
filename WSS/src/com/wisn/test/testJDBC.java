@@ -51,7 +51,7 @@ public class testJDBC {
 				
 			});
 			
-			 db.executeInsert("insert into test(content) values('hdhdh') ",new  ResultSetCallBack() {
+			 db.executeInsertOrUpdate("insert into test(content) values('hdhdh') ",new  ResultSetCallBack() {
 
 				@Override
 				public void executeResult(ResultSet resultSet) {
