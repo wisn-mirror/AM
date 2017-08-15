@@ -1,6 +1,5 @@
 package com.wisn.servlet.web;
 
-import com.wisn.bean.Admin;
 import com.wisn.servlet.BaseServlet;
 import com.wisn.utils.LogUtils;
 
@@ -33,16 +32,16 @@ public class RegisterServlet extends BaseServlet {
 					request.getRequestDispatcher("/register.jsp").forward(request, response);
 				}else{
 					//验证身份
-					AuthServiceImpl   auth=new  AuthServiceImpl();
-					//loginParamter 
-					Admin register = auth.UserRegister(username,password);
-					if(register==null){
-//						response.getWriter().print(JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500));
-						request.getRequestDispatcher("/register.jsp").forward(request, response);
-					}else{
-						request.getSession().setAttribute("admin", register);
-						request.getRequestDispatcher("/Manager.jsp").forward(request, response);
-					}
+//					AuthServiceImpl   auth=new  AuthServiceImpl();
+//					//loginParamter
+//					Admin register = auth.UserRegister(username,password);
+//					if(register==null){
+////						response.getWriter().print(JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500));
+//						request.getRequestDispatcher("/register.jsp").forward(request, response);
+//					}else{
+//						request.getSession().setAttribute("admin", register);
+//						request.getRequestDispatcher("/Manager.jsp").forward(request, response);
+//					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

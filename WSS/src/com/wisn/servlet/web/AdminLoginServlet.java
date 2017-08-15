@@ -1,6 +1,5 @@
 package com.wisn.servlet.web;
 
-import com.wisn.bean.Admin;
 import com.wisn.servlet.BaseServlet;
 import com.wisn.utils.LogUtils;
 
@@ -33,16 +32,16 @@ public class AdminLoginServlet extends BaseServlet {
 					request.getRequestDispatcher("/AdminLogin.jsp").forward(request, response);
 				}else{
 					//验证身份
-					AuthServiceImpl   auth=new  AuthServiceImpl();
-					//loginParamter 
-					Admin appLogin = auth.DeviceLogin(username,password);
-					if(appLogin==null){
-//						response.getWriter().print(JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500));
-						request.getRequestDispatcher("/AdminLogin.jsp").forward(request, response);
-					}else{
-						request.getSession().setAttribute("admin", appLogin);
-						request.getRequestDispatcher("/Manager.jsp").forward(request, response);
-					}
+//					AuthServiceImpl   auth=new  AuthServiceImpl();
+//					//loginParamter
+//					Admin appLogin = auth.DeviceLogin(username,password);
+//					if(appLogin==null){
+////						response.getWriter().print(JsonPars.toJson("",new Result(" ERROR Incorrect username or password  ",null), 500));
+//						request.getRequestDispatcher("/AdminLogin.jsp").forward(request, response);
+//					}else{
+//						request.getSession().setAttribute("admin", appLogin);
+//						request.getRequestDispatcher("/Manager.jsp").forward(request, response);
+//					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

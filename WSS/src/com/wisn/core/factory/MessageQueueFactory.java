@@ -36,6 +36,10 @@ public class MessageQueueFactory {
 		return messageQueue;
 	}
 
+	/**
+	 *
+	 * @param message
+	 */
 	public synchronized void MessageQueue(Message message) {
 		queue.addElement(message);
 		MessageCount++;
