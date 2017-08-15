@@ -4,7 +4,6 @@ import com.wisn.bean.DeviceInformation;
 import com.wisn.bean.Result;
 import com.wisn.bean.User;
 import com.wisn.code.JsonPars;
-import com.wisn.core.IDS;
 import com.wisn.serviceimpl.DeviceInfoServiceImpl;
 import com.wisn.servlet.BaseServlet;
 import com.wisn.servlet.ConstAPI;
@@ -38,14 +37,17 @@ public class AppRegister extends BaseServlet {
             } else {
                 DeviceInformation loginParamter = JsonPars.fromJson(requestContent, DeviceInformation.class);
                 //验证身份
-                DeviceInfoServiceImpl deviceInfoServiceImpl = new DeviceInfoServiceImpl();
-                DeviceInformation deviceInformation = deviceInfoServiceImpl.addDeviceInformation(loginParamter);
-                IDS.addId(deviceInformation.getId());
-                User user = new User(deviceInformation.getId(), deviceInformation.getUserName(), deviceInformation.getPassWord());
-                if (user == null) {
-                    jsonResponse = JsonPars.toJsonMessage("", new Result(" ERROR Incorrect username or password  ", null), 500);
+                if (loginParamter != null) {
+                    DeviceInfoServiceImpl deviceInfoServiceImpl = new DeviceInfoServiceImpl();
+                    DeviceInformation deviceInformation = deviceInfoServiceImpl.addDeviceInformation(loginParamter);
+                    if(deviceInformation==null){
+                        jsonResponse = JsonPars.toJsonMessage("", new Result(" already register please login  ", null), 500);
+                    }else{
+                        User user = new User(deviceInformation.getId(), deviceInformation.getUserName(), deviceInformation.getPassWord());
+                        jsonResponse = JsonPars.toJsonMessage(user, null, 200);
+                    }
                 } else {
-                    jsonResponse = JsonPars.toJsonMessage(user, null, 200);
+                    jsonResponse = JsonPars.toJsonMessage("", new Result(" ERROR Incorrect username or password  ", null), 500);
                 }
             }
         } catch (Exception e) {
@@ -54,8 +56,4 @@ public class AppRegister extends BaseServlet {
             responseJson(response, jsonResponse);
         }
     }
-
-    public void init() throws ServletException {
-    }
-
 }

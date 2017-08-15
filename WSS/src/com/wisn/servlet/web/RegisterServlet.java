@@ -1,7 +1,6 @@
 package com.wisn.servlet.web;
 
 import com.wisn.bean.Admin;
-import com.wisn.serviceimpl.AuthServiceImpl;
 import com.wisn.servlet.BaseServlet;
 import com.wisn.utils.LogUtils;
 

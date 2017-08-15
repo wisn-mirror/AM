@@ -11,7 +11,7 @@ import com.wisn.bean.DeviceInformation;
  */
 public interface DeviceUserInfoService {
 	
-	DeviceInformation  checkDeviceInformation(DeviceInformation deviceInformation);
+	DeviceInformation  checkDeviceInformation(String userName,String  password);
 	
 	DeviceInformation addDeviceInformation(DeviceInformation deviceInformation);
 

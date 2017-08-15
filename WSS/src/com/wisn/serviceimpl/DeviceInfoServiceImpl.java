@@ -8,16 +8,22 @@ public class DeviceInfoServiceImpl  implements DeviceUserInfoService {
 
 	@Override
 	public DeviceInformation checkDeviceInformation(
-			DeviceInformation deviceInformation) {
-		// TODO Auto-generated method stub
-		return null;
+			String userName,String  password) {
+		UserDao userDao=new UserDao();
+		return userDao.getUser(userName,password);
 	}
 
 	@Override
 	public DeviceInformation addDeviceInformation(
 			DeviceInformation deviceInformation) {
+		//Todo 检查是否存在 不存在再插入
 		UserDao userDao=new UserDao();
+		DeviceInformation user = userDao.getUser(deviceInformation.getUserName(), null);
+		if(user.getId()!=0){
+			return null;
+		}
 		return userDao.addUser(deviceInformation);
+
 	}
 
 	 

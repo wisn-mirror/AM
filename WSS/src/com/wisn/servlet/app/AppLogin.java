@@ -1,11 +1,13 @@
 package com.wisn.servlet.app;
 
 import com.wisn.bean.CacheUser;
+import com.wisn.bean.DeviceInformation;
 import com.wisn.bean.Result;
 import com.wisn.bean.User;
 import com.wisn.code.JsonPars;
 import com.wisn.core.IDS;
 import com.wisn.core.factory.SessionFactory;
+import com.wisn.serviceimpl.DeviceInfoServiceImpl;
 import com.wisn.servlet.BaseServlet;
 import com.wisn.servlet.ConstAPI;
 import com.wisn.utils.LogUtils;
@@ -38,8 +40,11 @@ public class AppLogin extends BaseServlet {
             } else {
                 User user = JsonPars.fromJson(requestContent, User.class);
                 LogUtils.d(user.toString());
+                DeviceInfoServiceImpl deviceInfoServiceImpl = new DeviceInfoServiceImpl();
+                DeviceInformation deviceInformation = deviceInfoServiceImpl.checkDeviceInformation(user.getName(), user.getPassword());
                 //验证身份
-                if (IDS.getId(user.getName().hashCode())) {
+                if (deviceInformation!=null&&deviceInformation.getId()!=0) {
+                    IDS.addId(deviceInformation.getId());
                     CacheUser cacheUser = new CacheUser(user.getName().hashCode(), user.token, user.name, user.password);
                     SessionFactory.getInstance().addUser(user.getId(), cacheUser);
                     jsonResponse = JsonPars.toJsonMessage(cacheUser, null, 200);
@@ -53,5 +58,11 @@ public class AppLogin extends BaseServlet {
         } finally {
             responseJson(response, jsonResponse);
         }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doDelete(req, resp);
+
     }
 }
