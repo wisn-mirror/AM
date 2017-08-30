@@ -8,6 +8,11 @@ public class TestResult {
     public TestResult() {
     }
 
+    public TestResult(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     public TestResult(int code, String msg, ResultTest data) {
         this.code = code;
         this.msg = msg;

@@ -29,10 +29,13 @@ public class MessageEntrance  extends WebSocketServer {
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         LogUtils.d( "onOpen:=getHttpStatusMessage:" + handshake.getResourceDescriptor());
         try{
-            long identify =Long.parseLong(handshake.getResourceDescriptor());
+            String resourceDescriptor = handshake.getResourceDescriptor();
+            long identify =Long.parseLong(resourceDescriptor.substring(1,resourceDescriptor.length()));
             if(IDS.getId(identify)){
+                LogUtils.d("onOpen");
                 SessionFactory.getInstance().addSession(identify,new SessionClient(conn));
             }else{
+                LogUtils.e("onOpen:=close session  id is null");
                 try {
                     conn.close();
                 } catch (Exception e) {

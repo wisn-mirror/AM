@@ -45,8 +45,8 @@ public class AppLogin extends BaseServlet {
                 //验证身份
                 if (deviceInformation!=null&&deviceInformation.getId()!=0) {
                     IDS.addId(deviceInformation.getId());
-                    CacheUser cacheUser = new CacheUser(user.getName().hashCode(), user.token, user.name, user.password);
-                    SessionFactory.getInstance().addUser(user.getId(), cacheUser);
+                    CacheUser cacheUser = new CacheUser(deviceInformation.getId(), user.token, user.name, user.password);
+                    SessionFactory.getInstance().addUser(deviceInformation.getId(), cacheUser);
                     jsonResponse = JsonPars.toJsonMessage(cacheUser, null, 200);
                 }else{
                     jsonResponse = JsonPars.toJsonMessage("", new Result(" please register ", ""), 500);

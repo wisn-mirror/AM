@@ -2,6 +2,7 @@ package com.wisn.servlet.app;
 
 import com.wisn.bean.ResultTest;
 import com.wisn.bean.TestResult;
+import com.wisn.bean.User;
 import com.wisn.code.JsonPars;
 import com.wisn.servlet.BaseServlet;
 import com.wisn.servlet.ConstAPI;
@@ -31,12 +32,19 @@ public class AppLoginTest extends BaseServlet {
             LogUtils.d(request.getRemoteAddr()+requestContent);
             //添加验证码验证
             if (requestContent == null || "".equals(requestContent)) {
-                jsonResponse =  JsonPars.toJson(new TestResult(500,"error",new ResultTest("000",String.valueOf(requestContent.hashCode()))));
+                jsonResponse =  JsonPars.toJson(new TestResult(502,"error request"));
             }else{
-                jsonResponse =  JsonPars.toJson(new TestResult(200,"success",new ResultTest("111",String.valueOf(requestContent.hashCode()))));
+                User user = JsonPars.fromJson(requestContent, User.class);
+                if(user!=null&&user.id!=0&&user.getName()!=null&&!"".equals(user.getName())){
+                    jsonResponse =  JsonPars.toJson(new TestResult(200,"success",new ResultTest(String.valueOf(user.id),user.getName())));
+                }else{
+                    jsonResponse =  JsonPars.toJson(new TestResult(204,"success"));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
+            jsonResponse =  JsonPars.toJson(new TestResult(500,"error"+e.getMessage()));
+
         } finally {
             responseJson(response, jsonResponse);
         }

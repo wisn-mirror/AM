@@ -3,8 +3,12 @@
  */
 package com.wisn.test;
 
-import com.wisn.bean.DeviceInformation;
+import com.wisn.utils.LogUtils;
 
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,7 +18,61 @@ import java.util.List;
  */
 public class Base {
 	public  String  tag= getClass().getCanonicalName();
+
+    /**
+     * 删除20天之前的log
+     * @param path
+     */
+    public static void deleteOldLog(final String path) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    File logFiles = new File(path);
+                    if (!logFiles.exists()) {
+//                        w(TAG, "logFiles not exist!");
+                        return;
+                    } else {
+                        Date date = new Date();
+                        Date cutoffDate = addDate(date, -20);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        File[] files = logFiles.listFiles();
+                        for (int i = 0; i < files.length; i++) {
+                            String datePart = null;
+                            try {
+                                datePart = files[i].getName();
+                                Date fileDate = dateFormat.parse(datePart);
+                                if (fileDate.before(cutoffDate)) {
+                                    files[i].delete();
+                                }
+                            } catch (ParseException pe) {
+                                LogUtils.d("parse Ecception :"+pe.getMessage());
+                            } catch (Exception e) {
+                                LogUtils.d("Ecception :"+e.getMessage());
+                            }
+                        }
+                    }
+                }catch (ParseException e) {
+                    LogUtils.d("parse Ecception  :"+e.getMessage());
+                }
+            }
+        }).start();
+    }
+    /**
+     *
+     * @param date
+     * @param day
+     * @return
+     * @throws
+     */
+    public static Date addDate(Date date,long day) throws ParseException {
+        long time = date.getTime();
+        day = day*24*60*60*1000;
+        time+=day;
+        return new Date(time);
+    }
 	public static void main(String[] args) {
+            deleteOldLog("/Users/wisn/test/log");
 		/*AdminDao  admin=new  AdminDao();
 		Admin login = admin.login("11", "22");
 		System.out.println(login.toString());
@@ -54,7 +112,7 @@ public class Base {
 //		int i=2;
 //		boolean istrue=((i%2)==0);
 
-        DeviceInformation deviceInformation=new DeviceInformation("wisn","nihao","132343241322");
+        //DeviceInformation deviceInformation=new DeviceInformation("wisn","nihao","132343241322");
 //        System.out.println(  JsonPars.toJson(deviceInformation,null,200));
     }
 	 
