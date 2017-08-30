@@ -7,6 +7,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="WSS" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="BaseJar" />
+          <element id="library" level="project" name="javax.websocket:javax.websocket-api:1.1" />
+        </element>
       </element>
     </root>
   </artifact>
